@@ -224,7 +224,14 @@ Page({
         focus_userId: userId
       },
       success(data) {
-
+          wx.showToast({
+            title: data.msg,
+          })
+          var interaction = that.data.interaction;
+          interaction[e.currentTarget.dataset.index].isFocus = 1;
+          that.setData({
+            interaction: interaction
+          })
       },
       fail(res) {
         console.log(res)

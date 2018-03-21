@@ -130,24 +130,24 @@
 <!-- 互动 -->
 <view class="interaction pd-top330" wx:if="{{navOn==4}}">
   <view class="list">
-      <view class="item bgWhite pd20 mt10" wx:for-index="idx" wx:for='{{interaction}}'>
+      <navigator url="/pages/raiders-detail/raiders-detail?id={{item.threadId}}" class="item bgWhite pd20 mt10" wx:for-index="idx" wx:for='{{interaction}}'>
         <view class="item-head">
           <image class="photo" src='{{item.userPhoto}}'></image>
           <view class="name">
             <view>{{item.userName}}<span class="level">LV.{{item.rank}}</span></view>
             <text class="mt10 fs24 c6">{{item.createTime}}</text>
           </view>
-          <view class="follow" bindtap='follow' data-id="{{item.userId}}">{{item.isFocus==1?'已':''}}关注</view> 
+          <view class="follow" catchtap='follow' data-index="{{idx}}" data-id="{{item.userId}}">{{item.isFocus==1?'已':''}}关注</view> 
         </view>
         <view class="mt20 context">
           <view>{{item.threadtitle}} </view>
           <view class="imgBox" wx:if="{{item.images.length>0}}">
-            <image src='{{item.content}}' wx:for-index="i" data-index="{{idx}}" id="{{i}}" bindtap='previewImg' wx:for="{{item.images}}"></image>
+            <image src='{{item.content}}' wx:for-index="i" data-index="{{idx}}" id="{{i}}" catchtap='previewImg' wx:for="{{item.images}}"></image>
           </view>
           <view class="tail ">
             <span>{{item.forumName}}</span>
             <view class="">
-              <view class="iconfont icon-weizhi fl " bindtap='fabulou' data-id="{{item.threadId}}">
+              <view class="iconfont icon-weizhi fl "  data-id="{{item.threadId}}">
                 <span class="fs24">赞 {{item.likeCount}}</span>
               </view>
               <view class="iconfont icon-weizhi fl ml20">
@@ -156,7 +156,7 @@
             </view>
           </view>
         </view>
-      </view>
+      </navigator>
   </view>
 </view>
 

@@ -49,6 +49,7 @@
 }
 .li .user-info .user-detail{
   float: left;
+  max-width: 420rpx;
 }
 .li .user-info .user-detail .name{
   margin-bottom: 10rpx;

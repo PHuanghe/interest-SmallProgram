@@ -286,10 +286,12 @@ page{
     border:1px solid rgb(68, 129, 235);
     color: rgb(68, 129, 235);
     border-radius: 50rpx;
+    flex-shrink:0;
 }
 .interaction .item-head .name{
   flex-grow: 1 ;
   padding: 0 20rpx;
+  text-align:justify;
 }
 .interaction .item-head .name .level{
   font-size: 20rpx;
@@ -304,6 +306,7 @@ page{
   height: 100rpx;
   width: 100rpx;
   border-radius: 50%;
+  flex-shrink:0;
 }
 .interaction .context .imgBox{
   display: flex;

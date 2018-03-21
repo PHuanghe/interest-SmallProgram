@@ -30,7 +30,7 @@
       </view>
     </view>
   </view>
-   <view class='list-fisheries'>
+   <view class='list-fisheries' wx:if="{{hotList.length>0}}">
     <view class='list-title'>
       热门赛事
       <navigator class='more' open-type="switchTab" url='../match/match'>

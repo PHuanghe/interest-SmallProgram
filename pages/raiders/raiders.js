@@ -88,9 +88,9 @@ Page({
         noMore: false,
         page: 1
       })
-      json = {  pondSearch: that.data.value, page: that.data.page}
+      json = { isCatch: 1,pondSearch: that.data.value, page: that.data.page}
     }else{
-      json = { page: that.data.page}
+      json = { isCatch: 1,page: that.data.page}
     }
     app.http({
       url: "/app/find/threadLists",
@@ -112,6 +112,11 @@ Page({
   linkTo: function (event) {
     wx.navigateTo({
       url: '../raiders-detail/raiders-detail?id=' + event.currentTarget.id
+    })
+  },
+  toAnglingSite: function (event) {
+    wx.navigateTo({
+      url: '/pages/fishingGroundDetails/fishingGroundDetails?id=' + event.currentTarget.id
     })
   }
 })

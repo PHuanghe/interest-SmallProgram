@@ -14,7 +14,7 @@
         </view>
         <view class='date'>{{item.createTime}}</view>
       </view>
-      <view class='fisheries'>{{item.pondName}}</view>
+      <view class='fisheries' id="{{item.pondId}}" catchtap='toAnglingSite'>{{item.pondName}}</view>
     </view>
     <view class='content'>{{item.threadtitle}}</view>
     <view class='content-imgs'>
