@@ -9,7 +9,7 @@
     {{item.content}}
     </view>
     <view class='content-imgs' wx:if="{{item.images.length>0}}">
-      <image class='content-img' src="{{item}}" bindtap='previewImg' data-index="{{index}}" id="{{imgIndex}}" wx:for="{{item.images}}" wx:for-index="imgIndex"></image>
+      <image class='content-img' src="{{item}}" catchtap='previewImg' data-index="{{index}}" id="{{imgIndex}}" wx:for="{{item.images}}" wx:for-index="imgIndex"></image>
     </view>
     <view class='put-date'>放鱼时间：{{item.putFishTime}}</view>
     <view class='fish-types'>
@@ -17,7 +17,7 @@
       <view class='type'>
         <block  wx:for="{{item.species}}">{{item.name}},</block>
       </view>
-      <view class='zan iconfont icon-zan {{item.isLike=="1"?"like":""}}' id="{{index}}"  bindtap='zan'> {{item.likes}}</view>
+      <view class='zan iconfont icon-zan {{item.isLike=="1"?"like":""}}' id="{{index}}"  catchtap='zan'> {{item.likes}}</view>
     </view>
   </navigator>
 </view>

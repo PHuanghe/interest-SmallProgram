@@ -153,6 +153,11 @@ page{
 .ticket .dad .child .describe text{
     display: block;
     line-height: 60rpx;
+    width: 200rpx;
+    height: 60rpx;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
 }
 .putTheFish {
   padding: 330rpx 20rpx 20rpx 20rpx;
