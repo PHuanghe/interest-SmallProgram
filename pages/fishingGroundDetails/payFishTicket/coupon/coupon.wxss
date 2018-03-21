@@ -1,0 +1,29 @@
+/* pages/fishingGroundDetails/payFishTicket/coupon/coupon.wxss */
+.list{
+  padding: 20rpx;
+}
+.list .on{
+  opacity: 1;
+}
+.item{
+  display: flex;
+  border: 1px solid #97DDFF;
+  line-height: 80rpx;
+  color: #FFF;
+  border-radius: 8rpx;
+  opacity: 0.6;
+}
+.left{
+  line-height: 160rpx;
+  padding: 0 40rpx;
+  background-color: #97DDFF;
+  font-size: 50rpx;
+}
+.right{
+  padding-left: 40rpx;
+}
+.right text{
+  display: block;
+  font-size: 30rpx;
+  color: #000;
+}

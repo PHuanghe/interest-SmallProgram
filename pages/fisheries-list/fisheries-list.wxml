@@ -1,0 +1,83 @@
+<view class='fisheries-list font-normal'>
+  <view class="fly">
+    <view class='search '>
+      <input placeholder='请输入钓场名称' bindinput="ipt">
+      <view class='iconfont icon-fangdajing'></view>
+      </input>
+      <button bindtap='sure'>搜索</button>
+    </view>
+    <view class='flex-wrp'>
+      <view class='flex-item item {{sortType==1||sortType==2?"cRed":""}}' id="{{sortType}}" data-type="1" bindtap='TabTime'>放鱼时间
+        <view class='iconfont icon-xiangxia {{sortType==2?"translateX180":""}}'></view>
+      </view>
+      <view class='line'></view>
+      <view class='flex-item item {{sortType==3||sortType==4?"cRed":""}}' id="{{sortType}}" data-type="2" bindtap='TabTime'>距离远近
+        <view class='iconfont icon-xiangxia {{sortType==4?"translateX180":""}}'></view>
+      </view>
+      <view class='line'></view>
+      <view class='flex-item {{specialSwitch?"cRed":""}} item' bindtap='specialSwitch'>特价</view>
+      <view class='line'></view>
+      <view class='flex-item item' bindtap='filtering' >筛选</view>
+    </view>
+    <view class='filter' hidden='{{filter}}'>
+    <view class='filter-type'>区县</view>
+    <view class='filter-model'>
+      <view class='model {{selectArea == item.areaId? "active":""}}' wx:key wx:for="{{area}}" id="{{item.areaId}}" bindtap='chooseArea' data-select="false">{{item.areaName}}</view>
+      <view class='model {{selectArea == 0? "active":""}}'  id="0" bindtap='chooseArea' data-select="false">不限</view>
+    </view>
+    <view class='filter-type'>类型</view>
+    <view class='filter-model'>
+      <view class='model {{selectPondType == item.typeId? "active":""}}' wx:key wx:for="{{pondType}}" id="{{item.typeId}}" bindtap='choosePondType'>{{item.name}}</view>
+      <view class='model {{selectPondType == 0? "active":""}}' bindtap='choosePondType' id="0" >不限</view>
+    </view>
+    <view class='filter-type'>价格区间</view>
+    <view class='filter-model'>
+      <view class='model {{priceType == item.priceId? "active":""}}' bindtap='choosePrice' id="{{item.priceId}}" wx:key wx:for="{{price}}">{{item.name}}</view>
+    </view>
+    <view class="sub">
+        <button class='reset' bindtap='reset'>重置</button>
+        <button class='sure' bindtap='sure'>确定</button>
+    </view>
+  </view>
+  </view>
+  <view class='ul'>
+    <view class='li' wx:key wx:for="{{pontList}}" id="{{item.pondId}}" bindtap='goToDetail'>
+      <image class='fisheries-pic' src="{{item.coverImg}}">
+        <view class='ren-background' hidden='{{!item.isOfficial == 0}}'></view>
+        <view class='ren' hidden='{{item.isOfficial == 0}}'>认</view>
+      </image>
+      <view class='fisheries-info'>
+        <view class='fisheries-title'>{{item.Name}}
+          <view class='special' wx:if='{{item.isPromotion}}'>特价</view>
+        </view>
+        <view class='fisheries-level'>
+          <image class='star' src='../../images/star.png'></image>
+          <image class='star' src='../../images/star.png'></image>
+          <image class='star' src='../../images/star.png'></image>
+          <image class='star' src='../../images/star.png'></image>
+          <image class='star' src='../../images/star.png'></image>
+        </view>
+        <view class='fish-species'>
+          <view wx:key wx:for="{{item.speciesId}}" class='fish-specie'>{{item.name}}、</view>
+        </view>
+        <view class='put-fish-date' hidden='{{!item.putFishTime}}'>
+          <view class='put'>放鱼</view>
+          {{item.putFishTime}}
+        </view>
+      </view>
+      <view class='fisheries-price font-b'>
+        <view wx:if="{{item.ticket[0].price}}">¥{{item.ticket[0].price}}</view>
+        <view wx:if="{{item.isPromotion==1}}" class="market-price">¥{{item.ticket[0].marketPrice}}</view>
+        <view class='distance font-normal'>{{item.distance}}km</view>
+      </view>
+    </view>
+  </view>
+  <view class="mask" bindtap='closeFiltering' hidden="{{filter}}"></view>
+  <view class="tail" wx:if='{{pontList.length!=0}}'>
+    {{context}}
+  </view>
+</view>
+<view class="noData" wx:if="{{pontList.length==0&&isLoading}}">
+  <view class="iconfont icon-kanbaozhi"></view>
+  这里空空如也
+</view>

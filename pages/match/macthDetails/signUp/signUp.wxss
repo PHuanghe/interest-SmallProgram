@@ -1,0 +1,27 @@
+/* pages/match/macthDetails/signUp/signUp.wxss */
+page{
+  padding: 20rpx;
+  background-color: #FFF;
+  box-sizing: border-box;
+}
+.list{
+  padding: 20rpx;
+  border: 1px solid #eee;
+  background-color: #FFF;
+}
+.title{
+  padding: 20rpx 0;
+  font-size: 34rpx;
+  text-align: center;
+  color: #3b8de3;
+}
+.item{
+  display: flex;
+  padding: 20rpx 0;
+  font-size: 34rpx;
+  align-items: center;
+  border-top: 1px solid #eee;
+}
+button{
+  margin-top: 20rpx;
+}

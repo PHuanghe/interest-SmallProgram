@@ -1,0 +1,63 @@
+<!--pages/match/match.wxml-->
+<view class='fisheries-list font-normal'>
+  <view class="fly">
+    <view class='search '>
+      <input placeholder='请输入赛事名称' bindinput="ipt">
+      <view class='iconfont icon-fangdajing'></view>
+      </input>
+      <button bindtap='sure'>搜索</button>
+    </view>
+    <view class='flex-wrp' >
+      <view class='flex-item item {{sortType==1||sortType==2?"cRed":""}}' id="{{sortType}}" data-type="1" bindtap='TabTime'>开赛时间
+        <view class='iconfont icon-xiangxia {{sortType==2?"translateX180":""}}'></view>
+      </view>
+      <view class='line'></view>
+      <view class='flex-item item {{sortType==3||sortType==4?"cRed":""}}' id="{{sortType}}" data-type="2" bindtap='TabTime'>距离远近
+        <view class='iconfont icon-xiangxia {{sortType==4?"translateX180":""}}'></view>
+      </view>
+      <view class='line'></view>
+      <view class='flex-item {{specialSwitch?"cRed":""}} item' bindtap='specialSwitch'>免费</view>
+      <view class='line'></view>
+      <view class='flex-item item' bindtap='filtering' >筛选</view>
+    </view>
+    <view class='filter' hidden='{{filter}}'>
+    <view class='filter-type'>赛事类型</view>
+    <view class='filter-model'>
+      <view class='model {{pondType == item.typeId? "active":""}}' bindtap='choosePrice' id="{{item.typeId}}" wx:key wx:for="{{pond}}">{{item.name}}</view>
+      <view class='model {{pondType == 0? "active":""}}' bindtap='choosePrice' id="0">全部</view>
+    </view>
+    <view class='filter-type'>赛事状态</view>
+      <view class='filter-model'>
+        <view class='model {{typeId == item.id? "active":""}}' bindtap='clickType' id="{{item.id}}" wx:key wx:for="{{typeList}}">{{item.text}}</view>
+    </view>
+    <view class="sub">
+        <button class='reset' bindtap='reset'>重置</button>
+        <button class='sure' bindtap='sure'>确定</button>
+    </view>
+  </view>
+  </view>
+  <view class='ul'>
+    <navigator url="macthDetails/macthDetails?id={{item.matchId}}" class="li" wx:for="{{pontList}}" >
+      <view class="cover">
+        <view class="label"><span>{{item.typeName}}</span></view> 
+        <image src='{{item.coverImg}}' mode='aspectFill'></image>
+        <view class="distance">{{item.distance}}km</view>
+        <view class="state">{{item.state}}</view>
+      </view>
+      <view class="context {{item.price==0?'zero':''}}" >
+          <view class="cGreen title">{{item.name}}</view>
+          <view class="iconfont icon-weizhi"> {{item.address}}</view>
+          <view class="iconfont icon-shijian"> {{item.startAt}}</view>
+          <span class="fr money">{{item.price!=0?'¥':''}}{{item.price==0?'免费':item.price}}</span>
+      </view>
+    </navigator>    
+  </view>
+  <view class="mask" bindtap='closeFiltering' hidden="{{filter}}"></view>
+  <view class="tail" wx:if='{{pontList.length!=0}}'>
+    {{context}}
+  </view>
+</view>
+ <view class="noData" wx:if="{{pontList.length==0&&isLoading}}">
+  <view class="iconfont icon-kanbaozhi"></view>
+  这里空空如也
+</view> 

@@ -1,0 +1,31 @@
+<!--pages/match/input/score/score.wxml-->
+<view class="top">
+  <image src='{{match.coverImg}}'></image>
+  <span class="label">{{match.typeName}}</span>
+  <view class="context">
+    <view class="name">{{match.name}}</view>
+      <view class="iconfont icon-weizhi"> {{match.address}}</view>
+      <view class="iconfont icon-shijian"> {{match.createTime}}</view>
+  </view> 
+</view> 
+<form bindsubmit="submit">
+  <view class="main">
+      <view class="title">
+        <span class="num">第{{match.userList.session}}场</span>
+      </view>
+      <view class="list">
+          <view class="item">
+              <view class="middle">
+                <image src='{{match.userList.userPhoto}}' class="fl"></image>
+                <view>
+                  <text>{{match.userList.name}}</text>
+                  <text>{{match.userList.mobile}}</text>
+                </view>
+              </view>
+              <input name="score"></input>
+              <text class="right">{{match.userList.mark}}</text>    
+          </view>
+      </view>
+  </view>
+  <button formType="submit">成绩录入</button>
+</form>

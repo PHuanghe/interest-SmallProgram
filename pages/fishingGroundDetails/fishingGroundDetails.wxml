@@ -1,0 +1,166 @@
+<!--pages/FishingGroundDetails/FishingGroundDetails.wxml-->
+<view class="fly">
+  <view class="head">
+      <view class="left">
+          <image src='{{anglingSite.coverImg}}' class='cover'></image>
+          <span wx:if="{{anglingSite.isOfficial>0}}">认证渔场</span>  
+      </view>
+      <view class="context">
+        <view class="label">
+          鱼种：{{anglingSite.species}}
+        </view>
+        <view class="">
+          <view class="address">地址：{{anglingSite.address}}</view>
+          <text>最近一次放鱼：{{anglingSite.putFishTime}}</text>
+        </view>
+      </view>
+  </view>
+  <view class='nav'>
+    <block wx:for="{{nav}}">
+      <view class="n-item {{navOn==item.id?'on':''}}" bindtap='switchNav' data-id="{{item.id}}">{{item.text}}</view>
+    </block>  
+  </view>
+  <!-- <view class="count" wx:if="{{navOn==1}}">
+    您有 {{couponList.length}} 张优惠券可以使用
+  </view> -->
+</view>
+
+<!-- //购票 -->
+<view wx:if="{{navOn==1}}" class="main pd-top330 ticket">
+  <view class="SpecialOffer dad" wx:if="{{fishTicket.original.length>0}}">
+    <view class="title">特价鱼票</view>
+    <view class="child"  wx:for="{{fishTicket.original}}">
+      <view class="price">
+        <view>¥<span class="ft72">{{item.price}}</span></view>
+         <view class="textCancel">¥{{item.marketPrice}}</view>
+      </view>
+      <view class="describe">
+        <text>{{item.name}}</text>
+        <text>{{item.description}}</text>
+      </view>
+      <view class="pay" bindtap='pay' data-id="{{item.ticketId}}">购买</view>
+    </view>
+  </view>
+  <view class="dad" wx:if="{{fishTicket.special.length>0}}">
+    <view class="title">普通鱼票</view>
+    <view class="child" wx:for='{{fishTicket.special}}'>
+      <view class="price">
+        <view>¥<span class="ft72">{{item.price}}</span></view>
+         <!-- <view class="textCancel">¥100</view> -->
+      </view>
+      <view class="describe">
+        <text>{{item.name}}</text>
+        <text>{{item.description}}</text>
+      </view>
+      <view class="pay" bindtap='pay' data-id="{{item.ticketId}}">购买</view>
+    </view>
+  </view>
+</view>
+
+<!-- 放鱼 -->
+<view class="putTheFish " wx:if="{{navOn==2}}">
+    <view class="dad" wx:if="{{fishMessage.length>0}}">
+      <view class="child" wx:for="{{fishMessage}}" wx:for-index="idx">
+         <view class="time fs24">{{item.createTime}}</view>  
+          <view class="context">{{item.content}}</view>
+          <view class="images">
+            <image wx:for="{{item.images}}" wx:for-index="i" data-index="{{idx}}" id="{{i}}" bindtap='previewImg' src="{{item}}"></image>
+          </view>
+          <view>放鱼时间：{{item.putFishTime}}</view>
+          <view class="flex-wrp mt10"> 
+            <view class="flex-shrink">放鱼种类：</view>
+            <view wx:if="{{item.species.length>0}}">
+              <block wx:for="{{item.species}}">
+                {{item.name}},
+              </block> 
+            </view>
+          </view> 
+      </view>
+    </view>
+</view>
+
+<!-- 详情 -->
+<view wx:if="{{navOn==3}}"  class="fishDetails pd-top330">
+    <view class="address info bottomLine">
+      <view class="iconfont icon-weizhi c6"></view>
+      <text>{{anglingSite.address}}</text>
+      <view class="iconfont icon-zhuanyiluxian roundIcon" bindtap='openMap'></view>
+    </view>
+    <view class="tel info">
+      <view class="iconfont icon-yonghu c6"></view>
+      <text>{{anglingSite.pondUser}} {{anglingSite.mobile}}</text>
+      <view class="iconfont icon-dianhua roundIcon" bindtap='tel'></view>
+    </view>
+    <view class="child mt10">
+      <view class="iconfont icon-jieshao introduceIcon">
+        <span class="ml20">钓场介绍</span>
+      </view>
+      <view class="sub">
+        {{anglingSite.description}}
+      </view>
+    </view>
+    <view class="child">
+      <view class="iconfont icon-tupian printIcon">
+        <span class="ml20">钓场图片</span>
+      </view>
+      <view class="sub">
+        <image src='{{item.imageUrl}}' wx:for-index="i" id="{{i}}" bindtap='previewImg'  wx:for="{{anglingSite.images}}"></image>
+      </view>
+    </view>
+    <view class="child ">
+      <view class="iconfont icon-hongbao-m chargeIcon">
+        <span class="ml20">收费情况</span>
+      </view>
+      <view class="sub">
+          {{anglingSite.expenseDesc}}
+      </view>
+    </view>
+    <view class="child ">
+      <view class="iconfont icon-shebeiguanli equipmentIcon">
+        <span class="ml20">周边配套</span>
+      </view>
+      <view class="sub flex-wrp">
+        <view class="iconfont icon-gou item" wx:for="{{anglingSite.surroundingId}}">
+          <span class="ml20">{{item}}</span>
+        </view>
+      </view>
+    </view>
+</view>
+
+<!-- 互动 -->
+<view class="interaction pd-top330" wx:if="{{navOn==4}}">
+  <view class="list">
+      <view class="item bgWhite pd20 mt10" wx:for-index="idx" wx:for='{{interaction}}'>
+        <view class="item-head">
+          <image class="photo" src='{{item.userPhoto}}'></image>
+          <view class="name">
+            <view>{{item.userName}}<span class="level">LV.{{item.rank}}</span></view>
+            <text class="mt10 fs24 c6">{{item.createTime}}</text>
+          </view>
+          <view class="follow" bindtap='follow' data-id="{{item.userId}}">{{item.isFocus==1?'已':''}}关注</view> 
+        </view>
+        <view class="mt20 context">
+          <view>{{item.threadtitle}} </view>
+          <view class="imgBox" wx:if="{{item.images.length>0}}">
+            <image src='{{item.content}}' wx:for-index="i" data-index="{{idx}}" id="{{i}}" bindtap='previewImg' wx:for="{{item.images}}"></image>
+          </view>
+          <view class="tail ">
+            <span>{{item.forumName}}</span>
+            <view class="">
+              <view class="iconfont icon-weizhi fl " bindtap='fabulou' data-id="{{item.threadId}}">
+                <span class="fs24">赞 {{item.likeCount}}</span>
+              </view>
+              <view class="iconfont icon-weizhi fl ml20">
+                <span class="fs24">评论 {{item.commentCount}}</span>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+  </view>
+</view>
+
+<view class="noData" wx:if="{{navOn==2&&fishMessage.length==0||navOn==4&&interaction.length==0||navOn==1&&fishTicket.length==0}}">
+  <view class="iconfont icon-kanbaozhi"></view>
+  这里空空如也
+</view>

@@ -1,0 +1,30 @@
+<!--pages/fishingGroundDetails/payFishTicket/payFishTicket.wxml-->
+<view>
+  <view class="top">
+     <view class="iconfont icon-qiandai"></view>
+     <view class="text">支付中心</view> 
+  </view>
+  <view class="coupon">
+    优惠
+    <!-- <view class="body-view fr">
+      <switch checked bindchange="switch1Change"/>
+    </view> -->
+    <navigator class="fr ft32" url="coupon/coupon">
+      选择优惠券
+      <span class="iconfont icon-xiangyou"></span>
+    </navigator>
+  </view>
+  <view class="payMethod">
+    <view class="title">支付方式</view>
+    <view class="list">
+      <view class="item">
+        <image class="wx_icon" src="../../../images/wx_icon.png"></image>
+        <span class="name">微信支付</span>
+        <icon type="success" size="16" />
+      </view>
+    </view>
+  </view>
+  <view class="tail">
+  立即支付
+  </view>
+</view>

@@ -1,0 +1,27 @@
+<view class='fish-info font-normal'>
+  <navigator class='li' url="/pages/fishingGroundDetails/fishingGroundDetails?id={{item.pondId}}" wx:for="{{fishMessage}}" wx:for-index="index">
+    <image class='pic' src="{{item.userPhoto}}"></image>
+    <view class='fisheries-name'>{{item.pondName}}
+      <view class='certification' hidden='{{item.isOfficial==0}}'>认证钓场</view>
+    </view>
+    <view class='date'>{{item.createTime}}</view>
+    <view class='content'>
+    {{item.content}}
+    </view>
+    <view class='content-imgs' wx:if="{{item.images.length>0}}">
+      <image class='content-img' src="{{item}}" bindtap='previewImg' data-index="{{index}}" id="{{imgIndex}}" wx:for="{{item.images}}" wx:for-index="imgIndex"></image>
+    </view>
+    <view class='put-date'>放鱼时间：{{item.putFishTime}}</view>
+    <view class='fish-types'>
+      <view class="fl">放鱼种类：</view>
+      <view class='type'>
+        <block  wx:for="{{item.species}}">{{item.name}},</block>
+      </view>
+      <view class='zan iconfont icon-zan {{item.isLike=="1"?"like":""}}' id="{{index}}"  bindtap='zan'> {{item.likes}}</view>
+    </view>
+  </navigator>
+</view>
+<view class="noData" wx:if="{{fishMessage.length==0}}">
+  <view class="iconfont icon-kanbaozhi"></view>
+  这里空空如也
+</view>

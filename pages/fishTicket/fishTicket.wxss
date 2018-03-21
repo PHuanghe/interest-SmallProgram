@@ -1,0 +1,98 @@
+/* pages/fishTicket/fishTicket.wxss */
+page{
+  background-color: #F8F8F8
+}
+.nav{
+  display: flex;
+  font-size: 28rpx;
+  background-color: #FFF;
+  position: fixed;
+  top:0;
+  right: 0;
+  left: 0;
+  box-shadow:0px 15rpx 10rpx -15rpx #000;
+}
+.dad{
+  padding: 80rpx 20rpx 20rpx 20rpx;
+}
+.n-item{
+  width: 25%;
+  line-height: 70rpx;
+  text-align: center;
+  color: #000;
+  border-bottom: 6rpx solid transparent;
+  box-sizing: border-box;
+  margin: 0 30rpx;
+}
+.nav .on{
+  /* border-bottom: 6rpx solid #4481EB;*/
+  color: #4481EB; 
+}
+.dad .item{
+  background-color: #FFF;
+  border-radius: 12rpx;
+  overflow: hidden;
+  margin-top: 20rpx;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(82,94,113,.1);
+  box-shadow: 0 2px 10px 0 rgba(82,94,113,.1);
+}
+.dad .item .title{
+  height: 60rpx;
+  line-height: 60rpx;
+  padding-left: 20rpx;
+}
+.dad .child{
+  display:flex;
+  align-items:center;
+  background-color:#97DDFF;
+  color:#FFF;
+  position: relative;
+}
+.dad .lable{
+  width: 140rpx;
+  height: 100%;
+  text-align: center;
+  color: #FFF;
+}
+.dad  .bgBlue{
+  color: #259B24;
+}
+.dad  .bgHui{
+  color: #B8B6B6 ;
+}
+.dad  .bgRed{
+  color: #E51C23;
+}
+.dad .child .price{
+  padding:  0 30rpx;
+  text-align: center;
+  margin: 10rpx 0;
+  border-right: 1px solid #BBB
+}
+.dad .child .describe{
+  padding: 0 20rpx;
+}
+.dad .child .describe text{
+    display: block;
+    line-height: 60rpx;
+}
+.pondName{
+  font-size: 28rpx;
+}
+.slider{
+  width: 25%;
+  position: absolute;
+  bottom:0;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  transition: left 0.2s;
+}
+.slider span{
+  background-color: #4481EB;
+  height: 6rpx;
+  display: block;
+}
+
+.op6{
+  opacity: 0.6;
+}

@@ -1,0 +1,152 @@
+/* pages/match/macthDetails/macthDetails.wxss */
+image{
+  width: 100%;
+}
+.main{
+  font-size: 32rpx;
+  padding: 20rpx 0 120rpx 0;
+  background-color: #FFF;
+}
+.main .info{
+  line-height: 46rpx;
+  color: #666;
+  font-size: 30rpx;
+  padding-right: 200rpx;
+  position: relative;
+}
+.name{
+  padding: 0 20rpx;
+}
+.signUp{
+  margin-top: 20rpx;
+  padding: 0 20rpx;
+  background-color: #EEE;
+}
+.signUp .title{
+  padding-top: 20rpx;
+}
+.signUp text{
+  display: block;
+}
+.label{
+  height: 46rpx;
+  width: 166rpx;
+  background-color: #87CEFF;
+  text-align: center;
+  color: #FFF;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20rpx;
+}
+.ul{
+  display: flex;
+  padding: 20rpx 0;
+  justify-content: space-between;
+  overflow-x: scroll;
+  white-space:nowrap;
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.ul .li{
+  border: 1rpx solid #F0F0F2;
+  padding: 10rpx;
+  width: 49%;
+  box-sizing: border-box;
+  border-radius: 8rpx;
+  color: #666;
+  background-color: #FFF;
+  flex-shrink:0;
+  margin-left: 1%;
+}
+.ul image{
+  height: 60rpx;
+  width: 60rpx;
+  padding: 10rpx;
+}
+.list{
+  padding: 0 20rpx;
+}
+.item{
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1px solid #F0F0F8;
+  position: relative;
+}
+/* .item span{
+  flex-grow: 1;
+} */
+.item .address{
+  flex-grow: 1;
+}
+.item .map{
+  color: #87CEFF;
+  padding: 0 20rpx;
+  font-size: 42rpx;
+}
+.dad{
+  padding: 0 20rpx;
+}
+.dad .title{
+  line-height: 80rpx;
+  text-align: center;
+}
+.dad text{
+  display: block;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.tail{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  height: 100rpx;
+}
+.tail .tel{
+  text-align: center;
+  background-color: #FF8C00;
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100rpx;
+  height: 100rpx;
+}
+ .btn{
+  line-height: 100rpx;
+  text-align: center;
+  flex: 1;
+  background-color: rgba(0,0,0,0.7);
+  color: yellow;
+}
+.tail .zero{
+  color: #FFF;
+  background-color: #5eb95e;
+
+}
+.slide-image{
+  height: 300rpx;
+  display: block;
+}
+.noUser{
+  height: 100rpx;
+  background-color: #FFF;
+  color: #999;
+  line-height: 100rpx;
+  text-align: center;
+  width: 100%;
+}
+.telItem .icon-kefu{
+  font-size: 42rpx;
+  display: block;
+}
+
+.title .iconfont{
+  font-size: 28rpx;
+}

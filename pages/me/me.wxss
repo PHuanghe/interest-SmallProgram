@@ -1,0 +1,100 @@
+.background{
+  background: rgb(64,133,246);
+  padding-top: 100rpx;
+  padding-bottom: 30rpx;
+  margin-bottom: 20rpx;
+}
+.user-avatar{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  margin: 0 auto;
+  display: block;
+}
+.user-name{
+  margin: 20rpx 0 10rpx;
+  text-align: center;
+  color: #FFF;
+}
+.level{
+  width: 60rpx;
+  padding: 5rpx 20rpx;
+  border-radius: 10rpx;
+  background: orange;
+  color: #FFF;
+  text-align: center;
+  margin: 0 auto;
+}
+.my-model{
+  background: #FFF;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+.title{
+  padding-bottom: 25rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+  margin-bottom: 10rpx;
+}
+.my-model .iconfont{
+  font-size: 50rpx;
+  margin-bottom: 5rpx;
+}
+.my-model .flex-item:first-child .iconfont{
+  color: #ffa500;
+}
+.my-model .flex-item:nth-child(2n) .iconfont{
+  color: #4fc1e9;
+}
+.my-model .flex-item:last-child .iconfont{
+  color: gray;
+}
+.ul{
+  overflow: hidden;
+  background: #FFF;
+}
+.ul .li{
+  line-height: 80rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+  padding: 0 20rpx;
+  overflow: hidden;
+}
+.ul .li:last-child{
+  border: none;
+}
+.ul .li view{
+  font-size: 50rpx;
+  margin-right: 20rpx;
+  float: left;
+}
+.ul .li view.icon-xiangyou{
+  font-size: 30rpx;
+  float: right;
+}
+.ul .li .icon-gerenxinxi{
+  color: rgb(64,133,246);
+}
+.ul .li .icon-xiazai46{
+  color: #FF7878;
+}
+.ul .li .icon-yijianfankui01{
+  color: #fb8526;
+}
+
+.iconfont {
+  position: relative;
+  display: inline-block;
+}
+.lable{
+  position: absolute;
+  height: 30rpx;
+  line-height: 30rpx;
+  min-width: 30rpx;
+  border-radius: 15rpx;
+  font-size: 22rpx;
+  background-color: red;
+  color: #FFF;
+  top: -12rpx;
+  right: -12rpx;
+  padding: 2rpx 4rpx;
+}

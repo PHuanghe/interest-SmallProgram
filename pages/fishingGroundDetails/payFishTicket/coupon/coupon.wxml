@@ -1,0 +1,12 @@
+<!--pages/fishingGroundDetails/payFishTicket/coupon/coupon.wxml-->
+<view class="list">
+  <view class="item">
+    <view class="left">
+      ¥100
+    </view>
+    <view class="right">
+      <text>全品优惠</text>
+      <text>将于20-18-10</text> 
+    </view>   
+  </view>
+</view>

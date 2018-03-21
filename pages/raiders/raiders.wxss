@@ -1,0 +1,102 @@
+.search{
+  background: #FFF;
+  padding: 10rpx 20rpx;
+  overflow: hidden;
+  margin-bottom: 15rpx;
+}
+.search input{
+  background: #e5e5e5;
+  height: 40rpx;
+  border-radius: 10rpx;
+  width: 70%;
+  position: relative;
+  padding: 0 10rpx 0 60rpx;
+  float: left;
+}
+.search input .iconfont{
+  position: absolute;
+  top: 3rpx;
+  left: 8rpx;
+  color: #999999;
+  z-index: 100;
+  font-size: 40rpx;
+}
+.search button{
+  float: right;
+  width: 18%;
+  height: 100%;
+  font-size: 20rpx;
+  background: rgb(64,133,246);
+  color: #FFF;
+  border: none;
+}
+.li{
+  background: #FFF;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+.li .user-info{
+  overflow: hidden;
+  margin-bottom: 15rpx;
+}
+.li .user-info .head{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6);
+  margin-right: 15rpx;
+  float: left;
+}
+.li .user-info .user-detail{
+  float: left;
+}
+.li .user-info .user-detail .name{
+  margin-bottom: 10rpx;
+}
+.li .user-info .user-detail .name .level{
+  display: inline-block;
+  margin-left: 15rpx;
+  color: orange;
+}
+.li .user-info .fisheries{
+  float: right;
+  padding: 10rpx 30rpx;
+  background: #3b8de3;
+  color: #FFF;
+  margin-top: 10rpx;
+  border-radius: 8rpx;
+}
+.li .content{
+  margin-bottom: 15rpx;
+}
+.content-imgs{
+  overflow: hidden;
+}
+.content-imgs .content-img{
+  width: 32%;
+  height: 150rpx;
+  background: rgba(0,0,0,0.6);
+  margin-right: 2%;
+  margin-bottom: 10rpx;
+}
+.content-imgs .content-img:nth-child(3n){
+  margin-right: 0;
+}
+.li .bottom{
+  overflow: hidden;
+}
+.li .bottom .thread-type{
+  float: left;
+  color: #666;
+}
+.li .bottom .zan{
+  float: right;
+  font-size: 26rpx;
+  color: #ffa500;
+}
+.li .bottom .talk{
+  float: right;
+  font-size: 26rpx;
+  color: #0ec91c;
+  margin-right: 20rpx;
+}

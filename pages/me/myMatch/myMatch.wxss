@@ -1,0 +1,77 @@
+/* pages/me/myMatch/myMatch.wxss */
+
+.nav{
+  display: flex;
+  font-size: 28rpx;
+  background-color: #FFF;
+  position: fixed;
+  top:0;
+  right: 0;
+  left: 0;
+  box-shadow:0px 15rpx 10rpx -15rpx #000;
+}
+.dad{
+  padding: 80rpx 20rpx 20rpx 20rpx;
+}
+.n-item{
+  width: 25%;
+  line-height: 70rpx;
+  text-align: center;
+  color: #000;
+  border-bottom: 6rpx solid transparent;
+  box-sizing: border-box;
+  margin: 0 30rpx;
+}
+.nav .on{
+  border-bottom: 6rpx solid #4481EB;
+  color: #4481EB; 
+}
+
+.ul{
+  padding-top: 80rpx;
+}
+.ul image{
+  width: 120rpx;
+  height: 120rpx;
+  float: left;
+  margin-right: 20rpx;
+  border-radius: 8rpx;
+}
+.ul .li{
+  margin:20rpx;
+  background-color:#FFF;
+  padding:0 20rpx;
+  border-radius: 8rpx;
+  border:1px solid #eee;
+}
+.ul .li .top{
+  padding: 20rpx 0;
+  border-bottom: 1px solid #eee;
+}
+.ul .li .bottom{
+  padding: 20rpx 0;
+  display: flex;
+  justify-content:space-between;
+}
+.ul .li .top .context{
+  overflow: hidden;
+  color: #666;
+}
+.ul .li .top .context .title{
+  color: #3b8de3;
+  font-size: 34rpx;
+  margin-bottom: 10rpx;
+}
+.ul .li .top .context view{
+  font-size: 28rpx;
+}
+.ul .li .bottom .label{
+  height: 60rpx;
+  width: 160rpx;
+  line-height: 60rpx;
+  color: #FFF;
+  background-color: rgb(37, 155, 36);
+  font-size: 30rpx;
+  text-align: center;
+  border-radius: 8rpx;
+}

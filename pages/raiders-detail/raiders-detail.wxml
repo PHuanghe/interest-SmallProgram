@@ -1,0 +1,52 @@
+<view class="raiders-detail font-normal">
+  <view class='user-info'>
+    <image class='head' src="{{data.author.userPhoto}}"></image>
+    <view class='user-detail'>
+      <view class='name'>{{data.author.userName}}</view>
+      <view class='level'>Lv{{data.author.level}}</view>
+    </view>
+  </view>
+  <view class='title'>{{data.threadtitle}}</view>
+  <view class='date'>{{data.createTime}}</view>
+  <view class='content'>
+    <view wx:key wx:for="{{data.items.content}}">
+      <view wx:if="{{item.itemType == 'text'}}">{{item.content}}</view>
+      <image wx:elif="{{item.itemType == 'img'}}" src="{{item.content}}"></image>
+    </view>
+  </view>
+  <view class="appreciate">
+    <view class="appreciate-users">
+      <image class="appreciate-user" wx:key wx:for="{{data.zan_users}}" src="{{item.userPhoto}}"></image>
+    </view>
+    <view class="appreciate-count">{{data.total_zans}}人赞赏</view>
+    <view class="appreciate-button" bindtap='dianZanThread'>赞</view>
+  </view>
+  <view class='gray-div'></view>
+  <view class='ul'>
+    <view class='li'wx:key wx:for="{{commentList}}">
+      <image class='comment-head' src="{{item.userPhoto}}"></image>
+      <view class='comment-info'>
+        <view class='comment-user-info'>
+          <view class='comment-user-name'>{{item.userName}}</view>
+          <view class='talk iconfont icon-pinglun' data-commentId="{{item.commentId}}" bindtap='replyComment'> 回复</view>
+          <view class='zan iconfont icon-dianzan zan-{{item.is_like}}' data-like="{{item.is_like}}" data-commentId="{{item.commentId}}" bindtap='dianZanComment'> {{item.likeCount}}</view>
+        </view>
+        <view class='comment-date'>{{item.createTime}}</view>
+        <view class='commented-content' hidden='{{!item.replyUser}}'>
+          <view class='commented-user-name'>{{item.replyUser}}</view>
+          <view class='commented-detail'>{{item.replyContent}}</view>
+        </view>
+        <view class='comment-content'>{{item.content}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='footer'>
+    <form>
+      <input placeholder='发表评论' bindinput='inputValue' focus="{{focus}}">
+        <view class='iconfont icon-bianji'></view>
+      </input>
+      <button bindtap='commentThread' form-type="reset">发表</button>
+    </form>
+    <view class='comment-count iconfont icon-pinglun'> {{commentCount}}</view>
+  </view>
+</view>

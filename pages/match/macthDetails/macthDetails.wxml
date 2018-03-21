@@ -1,0 +1,100 @@
+<!--pages/match/macthDetails/macthDetails.wxml-->
+<view>
+  <!-- <swiper indicator-dots="{{indicatorDots}}"
+    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" width="355" height="150"/>
+      </swiper-item>
+    </block>
+  </swiper> -->
+  <image src="{{match.coverImg}}" mode='aspectFill' class="slide-image" bindtap='openImage' height="150" />
+</view>
+<view class="main">
+  <view class="name">
+     <span class="ft36">{{match.name}}</span> 
+    <view class="info">
+      {{match.startAt}} <view class="ft30">{{match.address}}</view><view class="fr label" >
+        <span wx:if="{{match.status==1}}">报名中</span>
+        <span wx:if="{{match.status==2}}">待开赛</span>
+        <span wx:if="{{match.status==3}}">进行中</span>
+        <span wx:if="{{match.status==4}}">已结束</span>
+      </view>
+    </view>
+  </view>
+  <view class="signUp">
+    <view class="title" wx:if="{{match.enroll.length>0}}">报名选手<navigator url='enrollList/enrollList?id={{match.matchId}}' class="fr ft28" wx:if="{{match.enroll.length>2}}">查看更多<span class="iconfont icon-xiangyou"></span></navigator></view> 
+    <view class="ul">
+        <view class="li" wx:for="{{match.enroll}}">
+          <image class="fl" src='{{item.userPhoto}}'></image>
+          <view class="ft28">
+            <text>{{item.userName}}</text>
+            <text>{{item.createTime}}</text> 
+          </view>
+        </view>
+        <view wx:if="{{match.enroll.length==0}}" class="noUser">暂无报名选手,快成为第一个吧</view> 
+    </view>
+  </view>
+  <view class="list">
+    <view class="item ft26">
+        <span>比赛时间：</span>{{match.startAt}}
+    </view>
+    <view class="item ft26">
+        <span>比赛地点：</span><span class="address">{{match.address}}</span><view class="iconfont icon-ditudaohang map" bindtap='openMap'></view>
+    </view> 
+    <view class="item ft26">
+        <span>报名截止：</span>{{match.availableTo}}
+    </view> 
+    <view class="item ft26">
+        <span>报名人数：</span>{{match.enrollNum}}
+    </view>
+    <view class="item ft26">
+        <span>报名费用：</span>{{match.price}}
+    </view>
+    <view class="item ft26">
+        <span>比赛场次：</span>{{match.session}}
+    </view> 
+  </view>
+
+  <view class="dad">
+    <view class="child">
+       <view class="title">
+          赛事介绍
+       </view>
+       <text>{{match.matchDesc}}</text>
+    </view>
+    <view class="child">
+      <view class="title">
+        奖励说明
+      </view>
+      <text>{{match.awardDesc}}</text>
+    </view>
+    <view class="child">
+       <view class="title">
+          赛事规则
+       </view>
+       <text>{{match.ruleDesc}}</text>
+    </view>
+  </view>
+</view>
+<view class="tail">
+  <view class='tel' id="{{match.mobile}}" bindtap='tel'>
+    <view class="telItem">
+      <span class="iconfont icon-kefu"></span>
+      <view class="ft26">客服</view>
+    </view> 
+  </view>
+  <view class="btn zero" id="{{match.matchId}}" bindtap='{{match.isEnroll!=1?"signUp":""}}' wx:if="{{match.status==1}}">
+    <block wx:if="{{match.isEnroll!=1}}">
+      点击报名({{match.price==0?'免费':match.price+'元'}})
+    </block>
+    <block wx:else>
+      已报名
+    </block>
+  </view>
+  <view class="btn" wx:else>
+    <span wx:if="{{match.status==2}}">待开赛</span>
+    <span wx:if="{{match.status==3}}">进行中</span>
+    <span wx:if="{{match.status==4}}">已结束</span>
+  </view>
+</view>

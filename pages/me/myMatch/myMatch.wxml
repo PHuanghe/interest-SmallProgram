@@ -1,0 +1,39 @@
+<!--pages/me/myMatch/myMatch.wxml-->
+<view class="nav">
+  <block wx:for="{{nav}}">
+    <view class="n-item {{navOn==item.id?'on':''}}" bindtap='switchNav' data-id="{{item.id}}">{{item.text}}</view>
+  </block>
+</view>
+
+<view class="ul">
+  <view class="li" wx:for-index="idx" wx:for="{{match}}">
+    <view class="top">
+      <image src='{{item.coverImg}}'></image>
+      <view class="context"> 
+          <view class="title">{{item.name}}</view>
+          <view class="iconfont icon-weizhi"> {{item.address}}</view>
+          <view class="iconfont icon-shijian"> {{item.startAt}}</view>
+      </view> 
+    </view>
+    <view class="bottom">
+      <view class="label" id="{{item.code}}" data-index="{{idx}}" bindtap='matchCode' wx:if="{{navOn!=2}}">参赛码</view>
+
+      <picker bindtap='picker' data-url="drawResults" id="{{idx}}" bindchange="bindPickerChange" value="{{index}}" range="{{array}}" wx:if="{{item.session>1&&navOn!=2}}">
+        <view class="label">抽签结果</view>
+      </picker> 
+      <view bindtap='picker' data-url="ranking" id="{{idx}}" bindchange="bindPickerChange" value="1" class="label" wx:if="{{item.session==1&&navOn!=2}}">抽签结果</view>
+      <navigator class="label" url="showMatch/showMatch?id={{item.matchId}}" wx:if="{{navOn==2}}">秀比赛</navigator>
+      <picker bindtap='picker' data-url="ranking" id="{{idx}}" bindchange="bindPickerChange" value="{{index}}" range="{{array}}" wx:if="{{item.session>1&&navOn==2}}">
+        <view class="label">比赛结果</view>
+      </picker>
+      <view bindtap='picker' data-url="ranking" id="{{idx}}" bindchange="bindPickerChange" value="1" class="label" wx:if="{{item.session==1&&navOn==2}}">比赛结果</view> 
+
+
+    </view>
+  </view>
+</view>
+
+<view class="noData" wx:if="{{match.length<=0&&isLoading}}">
+  <view class="iconfont icon-kanbaozhi"></view>
+  这里空空如也
+</view>

@@ -1,0 +1,172 @@
+/* pages/match/input/input.wxss */
+
+page{
+  background-color: #FFF;
+  box-sizing: border-box;
+  padding: 20rpx;
+}
+.main{
+  padding:0 20rpx;
+  border: 1px solid #EEE;
+  margin-top: 20rpx;
+}
+.title{
+  padding:20rpx 0 ;
+  position: relative;
+  color: #3498db;
+  border-bottom: 1px solid #EEE;
+  font-size: 30rpx;
+}
+
+.item{
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+}
+.middle{
+  width: 50%;
+}
+.middle image{
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 20rpx;
+  border-radius: 40rpx;
+}
+.middle text{
+  display: block;
+  line-height: 40rpx;
+  font-size: 30rpx;
+  color: #999;
+}
+.item .left{
+  padding: 0 20rpx;
+  flex-grow: 1;
+  text-align: center;
+  font-size: 28rpx;
+}
+.item .right{
+  padding-right: 20rpx;
+  font-size: 30rpx;
+  color: #999;
+}
+
+
+
+.top image{
+  width: 200rpx;
+  height: 200rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+.top .label{
+  background-color: rgba(255,0,0,0.7);
+  display: block;
+  padding: 6rpx 20rpx;
+  font-size: 26rpx;
+  position: absolute;
+  left: 100rpx;
+  transform: translateX(-50%);
+  color: #fff;
+}
+.top{
+  background-color:#FFF;
+  padding-left: 200rpx;
+  border-radius: 8rpx;
+  border:1px solid #eee;
+  position: relative;
+  height: 200rpx;
+  overflow: hidden;
+}
+
+
+.top .context{
+  overflow: hidden;
+  color: #666;
+  padding: 20rpx;
+}
+.top .context .name{
+  color: #3b8de3;
+  font-size: 34rpx;
+  margin-bottom: 10rpx;
+}
+.top .context view{
+  font-size: 28rpx;
+}
+
+.tail{
+  padding: 40rpx;
+  font-size: 40rpx;
+  color: red;
+  text-align: center;
+}
+
+.code{
+  position: fixed;
+  top: 30%;
+  left: 50%; 
+  transform: translateY(-50%) translateX(-50%);
+  text-align: center;
+}
+.code .title{
+  line-height: 60rpx;
+  font-size: 40rpx;
+}
+.code .btn{
+  margin-top: 20rpx;
+  background-color: #5eb95e;
+  border:1px solid #5eb95e;
+  color: #fff;
+}
+button::after{
+ border: none;
+}
+.code input{
+  border: 1px solid #eee;
+  padding: 20rpx;
+}
+
+.search{
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #EEE;
+  margin: 10rpx 0 10rpx -70rpx;
+  border-radius: 8rpx;
+  overflow: hidden;
+  transition: width 0.4s ;
+  width: 80%;
+}
+.title .width70{
+  width: 70rpx;
+}
+
+.search input{
+  background-color: #EEE;
+  text-align: left;
+  flex-grow: 1;
+  min-width: 280rpx;
+}
+.search .iconfont{
+  flex-shrink:0;
+  width: 70rpx;
+  position: relative;
+  z-index: 66;
+  background-color: #EEE;
+  text-align: center;
+}
+.search text{
+  padding-right: 20rpx;
+  flex-shrink:0;
+}
+
+.noData{
+  position: relative;
+  transform: none;
+  left: 0;
+  padding: 50rpx;
+}

@@ -1,0 +1,72 @@
+/* pages/me/myMatch/drawResults/drawResults.wxss */
+page{
+ 
+}
+.list{
+  padding: 20rpx;
+  text-align: center;
+}
+.item{
+  padding: 20rpx;
+  border: 1px solid #EEE;
+  margin-bottom: 20rpx;
+  background-color: #FFF;
+  border-radius: 8rpx;
+}
+.item .title{
+  text-align: left;
+  padding: 20rpx 0;
+  border-bottom:1px solid #eee;
+}
+
+.item .context{
+  padding: 40rpx;
+  font-size: 80rpx;
+  color: red;
+}
+
+
+.top image{
+  width: 200rpx;
+  height: 200rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+.top .label{
+  background-color: rgba(255,0,0,0.7);
+  display: block;
+  padding: 6rpx 20rpx;
+  font-size: 26rpx;
+  position: absolute;
+  left: 100rpx;
+  transform: translateX(-50%);
+  color: #fff;
+}
+.top{
+  background-color:#FFF;
+  padding-left: 200rpx;
+  border-radius: 8rpx;
+  border:1px solid #eee;
+  position: relative;
+  height: 200rpx;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+}
+
+
+.top .context{
+  overflow: hidden;
+  color: #666;
+  padding: 10rpx 20rpx;
+  text-align: left;
+}
+.top .context .name{
+  color: #3b8de3;
+  font-size: 38rpx;
+  margin-bottom: 10rpx;
+}
+.top .context view{
+  font-size: 30rpx;
+}

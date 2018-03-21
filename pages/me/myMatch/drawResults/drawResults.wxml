@@ -1,0 +1,17 @@
+<!--pages/me/myMatch/drawResults/drawResults.wxml-->
+
+<view class="list">
+  <view class="top">
+    <image src='{{match.coverImg}}'></image>
+    <span class="label">{{match.typeName}}</span>
+    <view class="context">
+      <view class="name">{{match.name}}</view>
+        <view class="iconfont icon-weizhi"> {{match.address}}</view>
+        <view class="iconfont icon-shijian"> {{match.startAt}}</view>
+    </view> 
+  </view> 
+  <view class="item">
+      <view class="title">第{{match.value}}场抽签结果</view>
+      <view class="context">{{match.res.ballotCode?'#'+match.res.ballotCode:'等待抽签结果'}}</view> 
+  </view>
+</view>

@@ -1,0 +1,37 @@
+<!--pages/fishTicket/fishTicket.wxml-->
+<view class='nav'>
+  <block wx:for="{{nav}}">
+    <view class="n-item {{navOn==item.id?'on':''}}" bindtap='switchNav' data-id="{{item.id}}">{{item.text}}</view>
+  </block>
+  <view class="slider" style='left:{{navOn*25}}%'>
+    <span></span>
+  </view>  
+</view>
+
+<view class="dad ft28">
+  <block wx:for="{{ticket}}">
+    <view class="item {{item.status==3?'op6':''}}" bindtap='detail' id="{{item.userTicketId}}"  >
+        <view class='title clearfix'>
+          <span class='iconfont icon-weizhi pondName'> {{item.pondName}}</span>
+          <view class="lable fr bgHui" wx:if="{{item.status==3}}">已使用</view>
+          <view class="lable fr bgBlue" wx:if="{{item.status==1}}">未使用</view>
+          <view class="lable fr bgRed" wx:if="{{item.status==2}}">进行中</view>  
+        </view>
+        <view class="child">
+          <view class="price">
+            <view>¥<span class="ft72">{{item.price}}</span></view>
+            <!-- <view class="textCancel">¥100</view> -->
+          </view>
+          <view class="describe">
+            <text>{{item.ticketName}}</text>
+            <text>{{item.description}}</text>
+          </view>
+        </view>
+    </view>
+  </block>
+</view>
+
+<view class="noData" wx:if="{{ticket.length==0}}">
+  <view class="iconfont icon-kanbaozhi"></view>
+  这里空空如也
+</view>

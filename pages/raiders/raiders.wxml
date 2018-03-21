@@ -1,0 +1,33 @@
+<view class="raiders font-normal">
+  <view class='search'>
+    <input placeholder='请输入钓场名称' bindinput='inputValue'>
+    <view class='iconfont icon-fangdajing'></view>
+    </input>
+    <button data-seach="1" bindtap='getList'>搜索</button>
+  </view>
+  <view class='li' wx:key wx:for="{{list}}" id="{{item.threadId}}" bindtap='linkTo'>
+    <view class='user-info'>
+      <image class='head' src="{{item.userPhoto}}"></image>
+      <view class='user-detail'>
+        <view class='name'>{{item.userName}}
+          <view class='level'>Lv{{item.rank}}</view>
+        </view>
+        <view class='date'>{{item.createTime}}</view>
+      </view>
+      <view class='fisheries'>{{item.pondName}}</view>
+    </view>
+    <view class='content'>{{item.threadtitle}}</view>
+    <view class='content-imgs'>
+      <image class='content-img' wx:key wx:for="{{item.images}}" src="{{item.content}}"></image>
+    </view>
+    <view class='bottom'>
+      <view class='thread-type'>{{item.forumName}}</view>
+      <view class='zan iconfont icon-dianzan'> {{item.likeCount}}</view>
+      <view class='talk iconfont icon-pinglun'> {{item.commentCount}}</view>
+    </view>
+  </view>
+</view>
+<view class="noData" wx:if="{{list.length==0}}">
+  <view class="iconfont icon-kanbaozhi"></view>
+  这里空空如也
+</view>

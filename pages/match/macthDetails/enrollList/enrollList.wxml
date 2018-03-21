@@ -1,0 +1,14 @@
+<!--pages/match/macthDetails/enrollList/enrollList.wxml-->
+
+<view class="list">
+  <view class="item" wx:for="{{enrollList}}">
+      <image src="{{item.userPhoto}}"></image>
+      <view class="content">
+        <span>{{item.userName}}</span>
+        <span>{{item.updateTime}}</span>
+      </view>
+      <view class="label {{item.status==1?'':'cGreen'}}">
+        {{item.status==1?'未入场':'已入场'}}
+      </view>
+  </view>
+</view>

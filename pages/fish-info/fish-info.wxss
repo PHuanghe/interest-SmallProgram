@@ -1,0 +1,82 @@
+.fish-info {
+  padding: 30rpx;
+}
+
+.fish-info .li {
+  background: #fff;
+  padding: 20rpx;
+  position: relative;
+  margin-bottom: 40rpx;
+  color: #515151;
+  border-radius: 8rpx;
+}
+
+.fish-info .li .pic {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  position: absolute;
+  top: -25rpx;
+  left: -25rpx;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.fisheries-name {
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
+}
+
+.certification {
+  display: inline-block;
+  margin-left: 10rpx;
+  background: orange;
+  color: #fff;
+  padding: 3rpx 10rpx;
+  border-radius: 5rpx;
+}
+
+.date {
+  color: #999;
+  margin-bottom: 10rpx;
+}
+
+.content {
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  letter-spacing: 2rpx;
+  margin-bottom: 10rpx;
+}
+.content-imgs{
+  overflow: hidden;
+}
+.content-imgs .content-img{
+  width: 32%;
+  height: 150rpx;
+  background: rgba(0,0,0,0.6);
+  margin-right: 2%;
+  margin-bottom: 10rpx;
+}
+.content-imgs .content-img:nth-child(3n){
+  margin-right: 0;
+}
+.fish-types{
+  overflow: hidden;
+}
+.fish-types .type{
+  color: #3284d9;
+  float: left;
+  width: 400rpx;
+}
+.fish-types .zan{
+  color: #999;
+  position: absolute;
+  right: 20rpx;
+  bottom:20rpx;
+}
+.li .fish-types .like{
+  color: #ffa500;
+}

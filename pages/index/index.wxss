@@ -1,0 +1,229 @@
+swiper image{
+  width: 100%;
+  height: 100%
+}
+.tabDiv{
+  background: #FFF;
+  margin-top: 20rpx;
+}
+.currentAddress{
+  text-align: center;
+  padding: 15rpx 0;
+  border-bottom: 1rpx solid #e5e5e5;
+  color: #666;
+  font-size: 28rpx;
+}
+.reload{
+  float: right;
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 20rpx;
+  margin-top: 5rpx;
+}
+.list-fisheries{
+  margin-top: 20rpx;
+  background: #FFF;
+}
+.list-title{
+  padding: 15rpx 20rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+.list-title .more{
+  float: right;
+}
+.list-title .more span{
+  font-size: 25rpx;
+}
+.list-fisheries .ul{
+  padding: 0 20rpx;
+}
+.list-fisheries .ul .li{
+  padding: 20rpx 0;
+  overflow: hidden;
+  border-bottom: 1rpx solid #e5e5e5;
+  position: relative;
+}
+.list-fisheries .ul .li:last-child{
+  border-bottom: none;
+}
+.list-fisheries .ul .li .fisheries-pic{
+  width: 160rpx;
+  height: 120rpx;
+  background-color: rgba(0,0,0,0.6);
+  margin-right: 15rpx;
+  float: left;
+  position: relative;
+}
+.list-fisheries .ul .li .fisheries-pic .ren-background{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 30rpx solid orange;
+  border-top: 30rpx solid orange;
+  border-bottom: 30rpx solid transparent;
+  border-right: 30rpx solid transparent;
+}
+.list-fisheries .ul .li .fisheries-pic .ren{
+  position: absolute;
+  top: 2rpx;
+  left: 5rpx;
+  color: #FFF;
+}
+.fisheries-info{
+  float: left;
+  max-width: 55%;
+}
+.fisheries-info .fisheries-title{
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.fisheries-info .special{
+  display: inline-block;
+  margin-left: 10rpx;
+  background: red;
+  color: #FFF;
+  text-align: center;
+  padding: 0 5rpx;
+}
+.fisheries-info .star{
+  width: 25rpx;
+  height: 25rpx;
+}
+.fisheries-info .fish-species{
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.fisheries-info .fish-specie{
+  display: inline-block;
+}
+.put-fish-date{
+  margin-top: 5rpx;
+  color: #999999;
+}
+.put-fish-date .put{
+  float: left;
+  background: rgb(64,133,246);
+  color: #FFF;
+  text-align: center;
+  padding: 0 5rpx;
+  margin-right: 10rpx;
+}
+.fisheries-price{
+  float: right;
+  color: red;
+  font-weight: bold;
+  text-align: right;
+}
+.market-price{
+  font-size: 24rpx;
+  color: #999;
+  text-decoration:line-through;
+  font-weight: normal;
+  text-align: right;
+}
+.distance{
+  color: #999999;
+  font-weight: normal;
+  text-align: right;
+  position: absolute;
+  bottom:20rpx;
+  right: 0;
+}
+
+
+
+.list .item{
+  overflow:hidden;
+  position:relative;
+  margin:20rpx;
+  background:#FFF;
+  border-radius: 8rpx;
+}
+.list .item image{
+  width: 100%;
+  height: 300rpx;
+}
+.list .item .context{
+  color: #999;
+  padding:20rpx;
+  position: relative;
+}
+.list .item .context view{
+  font-size:26rpx;
+  padding-right: 180rpx; 
+}
+.list .item .context .title{
+  font-size: 36rpx;
+  padding: 0;
+}
+
+.list .item .label{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 160rpx;
+  height: 160rpx;
+  color: #FFF;
+  border-radius: 8rpx;
+  
+}
+.list .item .cover span{
+  position: relative;
+  padding-left: 10rpx;
+  line-height: 60rpx;
+}
+.list .item .label::before{
+  content:'';
+  width: 0; 
+  height: 0; 
+  border-top: 110rpx solid red; 
+  border-right: 110rpx solid transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.money{
+  color: #FFF;
+  font-size: 36rpx;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgb(64,133,246) ;
+  right: 20rpx;
+  width: 160rpx;
+  height: 60rpx;
+  display: block;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 8rpx;
+}
+.cover{
+  position: relative;
+  height: 300rpx;
+}
+
+.cover .distance{
+  font-weight: normal;
+  text-align: right;
+  position: absolute;
+  right: 0;
+  bottom:0;
+  background-color: rgba(0,0,0,0.4);
+  color: yellow;
+  padding: 10rpx 20rpx;
+  border-top-left-radius: 20rpx;
+}
+.cover .state{
+  background-color: rgba(138,43,226,0.8);
+  color: #FFF;
+  padding: 10rpx 20rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
+}

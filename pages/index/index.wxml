@@ -1,0 +1,97 @@
+<!--index.wxml-->
+<view class='index font-normal'>
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:key wx:for="{{banner}}" wx:for-index="idx">
+      <swiper-item>
+        <image src="{{item.adFile}}" class="slide-image" id="{{idx}}" bindtap='previewImg'/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='tabDiv'>
+    <view class='currentAddress iconfont icon-dingwei'> {{address}}
+      <image class='reload' src="../../images/reload.png" bindtap="getAddress"></image>
+    </view>
+    <view class='flex-wrp'>
+      <view class='flex-item' bindtap='fishInfo'>
+        <image src="../../images/icon-1.png"></image>
+        <view>鱼讯信息</view>
+      </view>
+      <view class='flex-item' bindtap='raiders'>
+        <image src="../../images/icon-2.png"></image>
+        <view>鱼获攻略</view>
+      </view>
+      <view class='flex-item' bindtap='fishTicket'>
+        <image src="../../images/icon-3.png"></image>
+        <view>我的鱼票</view>
+      </view>
+      <view class='flex-item' bindtap='race'>
+        <image src="../../images/icon-4.png"></image>
+        <view>钓鱼赛事</view>
+      </view>
+    </view>
+  </view>
+   <view class='list-fisheries'>
+    <view class='list-title'>
+      热门赛事
+      <navigator class='more' open-type="switchTab" url='../match/match'>
+        更多<span class="iconfont icon-xiangyou"></span>
+      </navigator>
+    </view>
+    <view class='list'>
+      <navigator url="../match/macthDetails/macthDetails?id={{item.matchId}}" class="item" bindtap='macthDetails' wx:for="{{hotList}}">
+        <view class="cover">
+          <view class="label"><span>{{item.typeName}}</span></view> 
+          <image src='{{item.coverImg}}' mode='aspectFill'></image>
+          <view class="distance">{{item.distance}}km</view>
+          <view class="state">{{item.state}}</view>
+        </view>
+        <view class="context">
+            <view class="cGreen title">{{item.name}}</view>
+            <view class="iconfont icon-weizhi"> {{item.address}}</view>
+            <view class="iconfont icon-shijian"> {{item.startAt}}</view>
+            <span class="fr money">{{item.price!=0?'¥':''}}{{item.price==0?'免费':item.price}}</span>
+        </view>
+      </navigator>    
+    </view>
+  </view>
+  <view class='list-fisheries'>
+    <view class='list-title'>
+      附近钓场
+      <navigator class='more' open-type="switchTab" url="../fisheries-list/fisheries-list">
+      更多<span class="iconfont icon-xiangyou"></span>
+      </navigator>
+    </view>
+    <view class='ul'>
+      <view class='li' wx:key wx:for="{{pontList}}" id="{{item.pondId}}" bindtap='goToDetail'>
+        <image class='fisheries-pic' src="{{item.coverImg}}">
+          <view class='ren-background' hidden='{{!item.isOfficial == 0}}'></view>
+          <view class='ren' hidden='{{item.isOfficial == 0}}'>认</view>
+        </image>
+        <view class='fisheries-info'>
+          <view class='fisheries-title'>{{item.Name}}
+            <view class='special' wx:if='{{item.isPromotion}}'>特价</view>
+          </view>
+          <view class='fisheries-level'>
+            <image class='star' src='../../images/star.png'></image>
+            <image class='star' src='../../images/star.png'></image>
+            <image class='star' src='../../images/star.png'></image>
+            <image class='star' src='../../images/star.png'></image>
+            <image class='star' src='../../images/star.png'></image>
+          </view>
+          <view class='fish-species'>
+            <view wx:key wx:for="{{item.speciesId}}" class='fish-specie'>{{item.name}}、</view>
+          </view>
+          <view class='put-fish-date' hidden='{{!item.putFishTime}}'>
+            <view class='put'>放鱼</view>
+            {{item.putFishTime}}
+          </view>
+        </view>
+        <view class='fisheries-price font-b'>
+          <view wx:if="{{item.ticket[0].price}}">¥{{item.ticket[0].price}}</view>
+          <view wx:if="{{item.isPromotion==1}}" class="market-price">¥{{item.ticket[0].marketPrice}}</view>
+          <view class='distance font-normal'>{{item.distance}}km</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,50 @@
+.feedback{
+  max-width: 100vw;
+  min-height: 100vh;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+textarea{
+  width: 100%;
+  background: #FFF;
+  padding: 20rpx;
+  box-sizing: border-box;
+  margin-bottom: 30rpx;
+}
+textarea:first-child{
+  height: 80rpx;
+}
+textarea:last-child{
+  height: 200rpx;
+}
+.add{
+  width: 200rpx;
+  line-height: 200rpx;
+  text-align: center;
+  color: #bbb;
+  font-size: 150rpx;
+}
+button{
+  background: rgb(64,133,246);
+  color: #FFF;
+}
+
+.item{
+  width:200rpx;
+  height:200rpx;
+  margin-right:20rpx;
+  display: inline-block;
+  position: relative;
+  margin-top: 20rpx;
+}
+image{
+  width: 100%;
+  height: 100%;
+}
+
+.icon{
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateY(-50%) translateX(50%);
+}

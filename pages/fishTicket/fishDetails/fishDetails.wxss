@@ -1,0 +1,50 @@
+/* pages/fishTicket/fishDetails/fishDetails.wxss */
+page{
+  
+}
+
+.context{
+  padding: 0 20rpx;
+}
+.title{
+  line-height: 80rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right:0;
+  text-align: center
+}
+.item{
+  display: flex;
+  align-items: center;
+  line-height: 70rpx;
+  border-top: 1px solid #F0F0F8;
+}
+.item span{
+  flex-grow:1
+}
+.tail{
+  line-height: 80rpx;
+  position: fixed;
+  left: 0;
+  right:0;
+  bottom:0;
+  text-align: center;
+  color: #FFF;
+}
+.code image{
+  width: 500rpx;
+  height: 500rpx;
+  margin-top: 30rpx;
+  border-radius: 12rpx;
+}
+
+.bgGreen{
+  background-color: #259B24;
+}
+.bgHui{
+  background-color: #B8B6B6 ;
+}
+.bgRed{
+  background-color: #E51C23;
+}

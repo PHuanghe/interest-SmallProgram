@@ -1,0 +1,34 @@
+<!--pages/me/myMatch/ranking/ranking.wxml-->
+<view class="top">
+  <image src='{{match.coverImg}}'></image>
+  <span class="label">{{match.typeName}}</span>
+  <view class="context">
+    <view class="name">{{match.name}}</view>
+      <view class="iconfont icon-weizhi"> {{match.address}}</view>
+      <view class="iconfont icon-shijian"> {{match.startAt}}</view>
+  </view> 
+</view>
+<view class="my t-c">
+  <view class="title">我的第{{match.value}}场比赛</view>
+  <view class="c9">排名:<span>第{{match.res.sort?match.res.sort:'?'}}名</span></view>
+  <view class="c9">成绩:<span>{{match.res.score?match.res.score:'--'}}</span></view>
+</view> 
+<view class="main">
+    <view class="title">
+      第{{match.value}}场
+    </view>
+    <view class="list" wx:if="{{ranking.length>0}}">
+        <view class="item" wx:for="{{ranking}}" wx:for-index="idx">
+            <span class="left">{{item.sort}}</span>
+            <view class="middle">
+              <image src='{{item.userPhoto}}' class="fl"></image>
+              <view>
+                <text>{{item.name}}</text>
+                <text>{{item.mobile}}</text>
+              </view>
+            </view>
+            <span class="right">{{item.score}}</span>    
+        </view>
+    </view>
+    <view class="tail" wx:else>赛事成绩暂未揭晓</view>
+</view>

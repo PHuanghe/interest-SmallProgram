@@ -1,0 +1,86 @@
+/* pages/fishingGroundDetails/payFishTicket/payFishTicket.wxss */
+.top{
+  background-color: #FFB90F;
+  font-size: 60rpx;
+  text-align: center;
+  color: #FFF;
+}
+.top .iconfont{
+  font-size: 80rpx;
+}
+
+.top .text{
+  padding: 30rpx;
+  font-size: 36rpx;
+}
+.coupon{
+  height: 80rpx;
+  font-size: 30rpx;
+  color: #999;
+  padding: 0 20rpx;
+  line-height: 80rpx;
+  background-color: #FFF;
+}
+.coupon view{
+  color: #000;
+}
+.coupon view span{
+  font-size: 30rpx;
+}
+
+
+.title{
+  padding: 20rpx;
+  font-size: 32rpx;
+}
+.item{
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  background-color: #FFF;
+}
+
+.name{
+  flex-grow: 1;
+}
+.wx_icon{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.tail{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  line-height: 80rpx;
+  text-align: center;
+  background-color: rgb(64,133,246);
+  color: #FFF;
+  font-size: 30rpx;
+}
+
+
+

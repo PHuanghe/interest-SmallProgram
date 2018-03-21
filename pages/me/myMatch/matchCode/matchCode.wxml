@@ -1,0 +1,24 @@
+<!--pages/me/myMatch/matchCode/matchCode.wxml-->
+<view class="main">
+      <view class="top">
+      <image src='{{match.coverImg}}'></image>
+      <span class="label">{{match.typeName}}</span>  
+      <view class="context">
+        <view class="name">{{match.name}}</view>
+          <view class="iconfont icon-weizhi"> {{match.address}}</view>
+          <view class="iconfont icon-shijian"> {{match.startAt}}</view>
+      </view> 
+    </view> 
+  <view class="item">
+    <view class="title">
+      参赛二维码
+    </view>
+    <view>
+      <image src='{{imagePath}}'></image>
+      <view class="canvas-box">
+        <canvas  hidden="{{canvasHidden}}" style="width: 686rpx;height: 686rpx;background:#f1f1f1;" canvas-id="mycanvas"/>
+      </view>
+      <view class="text">请向工作人员出示您的二维码</view>
+    </view>
+  </view>
+</view>

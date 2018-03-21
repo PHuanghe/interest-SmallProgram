@@ -1,0 +1,10 @@
+<view class='feedback font-normal'>
+  <textarea placeholder='标题' bindinput="titleValue"></textarea>
+  <textarea placeholder='反馈内容' bindinput='contentValue'></textarea>
+  <view class="item" wx:key wx:for="{{imagesList}}" wx:for-index="idx" id="{{idx}}" bindtap='playImage'>
+    <image src="{{item}}"></image>
+    <icon class="icon" type="clear" id="{{idx}}" catchtap='del'></icon>
+  </view>    
+  <view class='add iconfont icon-ai-up-img' bindtap='chooseImage'></view>
+  <button bindtap='sure'>确定</button>
+</view>

@@ -1,0 +1,2 @@
+<!--pages/me/myMatch/showMatch/showMatch.wxml-->
+<web-view src="{{url}}"></web-view>

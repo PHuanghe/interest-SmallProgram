@@ -1,0 +1,229 @@
+.fly{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: #FFF;
+  z-index: 10;
+}
+.search{
+  background: #FFF;
+  padding: 10rpx 20rpx;
+  overflow: hidden;
+}
+.search input{
+  background: #e5e5e5;
+  height: 40rpx;
+  border-radius: 10rpx;
+  width: 70%;
+  position: relative;
+  padding: 0 10rpx 0 60rpx;
+  float: left;
+}
+.search input .iconfont{
+  position: absolute;
+  top: 3rpx;
+  left: 8rpx;
+  color: #999999;
+  z-index: 100;
+  font-size: 40rpx;
+}
+.search button{
+  float: right;
+  width: 18%;
+  height: 100%;
+  font-size: 20rpx;
+  background: rgb(64,133,246);
+  color: #FFF;
+  border: none;
+}
+.flex-wrp{
+  background: #FFF;
+
+  color: #666;
+  border-bottom:1px solid #e5e5e5;
+}
+.flex-wrp .line{
+  width: 1rpx;
+  height: 40rpx;
+  background: #999999;
+  position: relative;
+  top: 15rpx;
+}
+.flex-wrp .flex-item .iconfont{
+  display: inline-block;
+}
+.filter{
+  box-sizing: border-box;
+  background: #FFF;
+  width: 100%;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #999999;
+}
+.filter .filter-model{
+  overflow: hidden;
+}
+.filter .filter-model .model{
+  padding: 0 36rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  background: #e5e5e5;
+  margin: 15rpx 15rpx;
+  float: left;
+}
+.filter .filter-model .model.active{
+  background: rgb(64,133,246);
+  color: #FFF;
+}
+.filter .reset{
+  width: 20%;
+  margin-left: 2%;
+  font-size: 25rpx;
+  float: left;
+  background: #FEA500;
+  color: #FFF;
+  border: none;
+}
+.filter .sure{
+  width: 60%;
+  font-size: 25rpx;
+  float: right;
+  background: #0ABA07;
+  color: #FFF;
+  border: none;
+}
+
+.ul{
+  padding: 150rpx 20rpx 0 20rpx;
+  background: #FFF;
+}
+.ul .li{
+  padding: 20rpx 0;
+  overflow: hidden;
+  border-bottom: 1rpx solid #e5e5e5;
+  position: relative;
+}
+.ul .li:last-child{
+  border-bottom: none;
+}
+.ul .li .fisheries-pic{
+  width: 160rpx;
+  height: 120rpx;
+  background-color: rgba(0,0,0,0.6);
+  margin-right: 15rpx;
+  float: left;
+  position: relative;
+}
+.ul .li .fisheries-pic .ren-background{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 30rpx solid orange;
+  border-top: 30rpx solid orange;
+  border-bottom: 30rpx solid transparent;
+  border-right: 30rpx solid transparent;
+}
+.ul .li .fisheries-pic .ren{
+  position: absolute;
+  top: 2rpx;
+  left: 5rpx;
+  color: #FFF;
+}
+.fisheries-info{
+  float: left;
+  max-width: 55%;
+}
+.fisheries-info .fisheries-title{
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.fisheries-info .special{
+  display: inline-block;
+  margin-left: 10rpx;
+  background: red;
+  color: #FFF;
+  text-align: center;
+  padding: 0 5rpx;
+}
+.fisheries-info .star{
+  width: 25rpx;
+  height: 25rpx;
+}
+.fisheries-info .fish-species{
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.fisheries-info .fish-specie{
+  display: inline-block;
+}
+.put-fish-date{
+  margin-top: 5rpx;
+  color: #999999;
+}
+.put-fish-date .put{
+  float: left;
+  background: rgb(64,133,246);
+  color: #FFF;
+  text-align: center;
+  padding: 0 5rpx;
+  margin-right: 10rpx;
+}
+.fisheries-price{
+  float: right;
+  color: red;
+  font-weight: bold;
+}
+.distance{
+  color: #999999;
+  font-weight: normal;
+  text-align: right;
+  position: absolute;
+  right: 0;
+  bottom:20rpx;
+}
+.market-price{
+  font-size: 24rpx;
+  color: #999;
+  text-decoration:line-through;
+  font-weight: normal;
+  text-align: right;
+}
+.mask{
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom:0;
+  z-index: 6;
+  background-color: rgba(0,0,0,0.4)
+}
+.cRed{
+  color: #4481EB;
+}
+
+.translateX180{
+  transform: rotateZ(180deg)
+}
+
+.item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sub{
+  height: 60rpx;
+}
+.tail{
+  font-size: 26rpx;
+  color: #666;
+  padding: 20rpx 0;
+  text-align: center;
+}

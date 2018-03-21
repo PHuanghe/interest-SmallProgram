@@ -1,0 +1,55 @@
+<view class="me font-normal">
+  <view class='background'>
+    <image class='user-avatar' src="{{user.userPhoto}}"></image>
+    <view class='user-name font-b'>{{user.userName}}</view>
+    <view class='level'>lv.{{user.level}}</view>
+  </view>
+  <view class='my-model'>
+    <view class='title'>我的鱼票</view>
+    <view class='flex-wrp'>
+      <view class='flex-item' id='1' bindtap='fishTicket'>
+        <view class='iconfont icon-weishiyong'><span class="lable" wx:if="{{num.ticketNum>0}}">{{num.ticketNum>99?'..':num.ticketNum}}</span></view>
+        <view>未使用</view>    
+      </view>
+      <view class='flex-item'  id='2' bindtap='fishTicket'>
+        <view class='iconfont icon-youhuiquan'><span class="lable" wx:if="{{num.usingTicketNum>0}}">{{num.usingTicketNum>99?'':num.usingTicketNum}}</span></view>
+        <view>进行中</view>
+      </view>
+      <view class='flex-item'  id='3' bindtap='fishTicket'>
+        <view class='iconfont icon-kaishijixi'><span class="lable" wx:if="{{num.usedTicketNum>0}}">{{num.usedTicketNum>99?'..':num.usedTicketNum}}</span></view>
+        <view>已使用</view>
+      </view>
+    </view>
+  </view>
+  <view class='my-model' bindtap='race'>
+    <view class='title'>我的赛事</view>
+    <view class='flex-wrp'>
+      <navigator url="myMatch/myMatch?id=0"  class='flex-item'>
+        <view class='iconfont icon-huodong'><span class="lable" wx:if="{{num.notbeginCount>0}}">{{num.notbeginCount>99?'..':num.notbeginCount}}</span></view>
+        <view>未参赛</view>
+      </navigator>
+      <navigator url="myMatch/myMatch?id=1" class='flex-item'>
+        <view class='iconfont icon-qizhi'><span class="lable" wx:if="{{num.ongoingCount>0}}">{{num.ongoingCount>99?'..':num.ongoingCount}}</span></view>
+        <view>已参赛</view>
+      </navigator>
+      <navigator url="myMatch/myMatch?id=2" class='flex-item'>
+        <view class='iconfont icon-lishigongdan'><span class="lable" wx:if="{{num.endCount>0}}">{{num.endCount>99?'..':num.endCount}}</span></view>
+        <view>历史赛事</view>
+      </navigator>
+    </view>
+  </view>
+  <view class='ul'>
+    <!-- <view class='li font-b'>
+      <view class='iconfont icon-gerenxinxi'></view>个人信息
+      <view class='iconfont icon-xiangyou'></view>
+    </view> -->
+    <view class='li font-b' bindtap='customerService'>
+      <view class='iconfont icon-xiazai46'></view>联系客服
+      <view class='iconfont icon-xiangyou'></view>
+    </view>
+    <view class='li font-b' bindtap='feedback'>
+      <view class='iconfont icon-yijianfankui01'></view>意见反馈
+      <view class='iconfont icon-xiangyou'></view>
+    </view>
+  </view>
+</view>

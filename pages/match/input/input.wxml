@@ -1,0 +1,46 @@
+<!--pages/me/myMatch/ranking/ranking.wxml-->
+
+<view class="code" wx:if="{{mask}}">
+    <view class="title t-c">输入邀请码</view>
+    <form bindsubmit="code">
+      <input name="code"></input>
+      <button class="btn" formType="submit">确定</button>
+    </form>
+</view>
+<view class="top" wx:if="{{!mask}}">
+  <image src='{{match.coverImg}}'></image>
+  <span class="label">{{match.typeName}}</span>
+  <view class="context">
+    <view class="name">{{match.name}}</view>
+      <view class="iconfont icon-weizhi"> {{match.address}}</view>
+      <view class="iconfont icon-shijian"> {{match.createTime}}</view>
+  </view> 
+</view> 
+<view class="main" wx:if="{{!mask}}">
+    <view class="title">
+      <span class=" num">第{{userList[0].session?userList[0].session:'?'}}场</span>
+      <view class="search {{isIpt?'':'width70'}}">
+        <view class="iconfont icon-fangdajing" bindtap='showIpt'></view>
+        <input bindblur='search' value="{{condition}}" placeholder="姓名或手机号"></input>
+        <text bindtap='searchUser'>搜索</text>
+        <text bindtap='closeIpt'>关闭</text>
+      </view>
+    </view>
+    <view class="list">
+        <view class="item" wx:for="{{userList}}" wx:for-index="idx">
+            <view class="middle">
+              <image src='{{item.userPhoto}}' class="fl"></image>
+              <view>
+                <text>{{item.name}}</text>
+                <text>{{item.mobile}}</text>
+              </view>
+            </view>
+            <span class="left">{{item.score?item.score:'--'}}{{item.mark}}</span>
+            <text class="right" bindtap='score' id="{{idx}}" >成绩录入</text>    
+        </view>
+    </view>
+    <view class="noData" wx:if="{{userList.length==0}}">
+      <view class="iconfont icon-kanbaozhi"></view>
+      {{context}}
+    </view>
+</view>
