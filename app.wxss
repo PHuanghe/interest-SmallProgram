@@ -128,7 +128,6 @@ page{
 }
 
 .canvas-box{
-  position: fixed;
-  top:999999rpx;
-  left: 0
+  position: absolute;
+  top: -99999px;
 }

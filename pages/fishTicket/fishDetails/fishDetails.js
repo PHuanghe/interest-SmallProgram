@@ -78,8 +78,8 @@ Page({
         userTicketId: id
       },
       success: res => {
-        var size = this.setCanvasSize();
-        this.createQrCode(res.data.code, "mycanvas", size.w, size.h);
+        var size = that.setCanvasSize();
+        that.createQrCode(res.data.code, "mycanvas", size.w, size.h);
         that.setData({
           info:res.data
         })
@@ -94,7 +94,7 @@ Page({
     var size = {};
     try {
       var res = wx.getSystemInfoSync();
-      var scale = 750 / 686;//不同屏幕下canvas的适配比例；设计稿是750宽
+      var scale = 750 / 685;//不同屏幕下canvas的适配比例；设计稿是750宽
       var width = res.windowWidth / scale;
       var height = width;//canvas画布为正方形
       size.w = width;
@@ -105,25 +105,26 @@ Page({
     }
     return size;
   },
+  getCodeImage: function (canvasId) {
+    var that = this;
+    setTimeout(function () {
+      wx.canvasToTempFilePath({
+        canvasId: canvasId,
+        success: function (res) {
+          console.log(res)
+          that.setData({
+            imagePath: res.tempFilePath
+          });
+        },
+        fail: function (res) {
+          console.log(res)
+        }
+      })
+    }, 1000)
+  },
   createQrCode: function (url, canvasId, cavW, cavH) {
     //调用插件中的draw方法，绘制二维码图片
     QR.api.draw(url, canvasId, cavW, cavH);
-    setTimeout(() => { this.canvasToTempImage(); }, 500);
-  },
-  //获取临时缓存照片路径，存入data中
-  canvasToTempImage: function () {
-    var that = this;
-    wx.canvasToTempFilePath({
-      canvasId: 'mycanvas',
-      success: function (res) {
-        var tempFilePath = res.tempFilePath;
-        that.setData({
-          imagePath: tempFilePath,
-          // canvasHidden:true
-        });
-      },
-      fail: function (res) {
-      }
-    });
+    this.getCodeImage(canvasId)
   }
 })

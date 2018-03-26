@@ -81,7 +81,7 @@
 
 <!-- 详情 -->
 <view wx:if="{{navOn==3}}"  class="fishDetails pd-top330">
-    <view class="address info bottomLine">
+    <view class=" info bottomLine">
       <view class="iconfont icon-weizhi c6"></view>
       <text>{{anglingSite.address}}</text>
       <view class="iconfont icon-zhuanyiluxian roundIcon" bindtap='openMap'></view>

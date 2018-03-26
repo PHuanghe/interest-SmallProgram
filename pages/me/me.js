@@ -82,11 +82,8 @@ Page({
     return app.shareInfo
   },
   customerService: function () {
-    wx.showModal({
-      title: '联系客服',
-      content: '0755-27158090',
-      showCancel: false,
-      confirmText: "我知道了"
+    wx.makePhoneCall({
+      phoneNumber: '0755-27158090' //仅为示例，并非真实的电话号码
     })
   },
   feedback: function () {

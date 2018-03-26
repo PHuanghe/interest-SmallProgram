@@ -103,12 +103,15 @@ Page({
     })
   },
   tel:function(e){
-    wx.showModal({
-      title: '联系客服',
-      content: e.currentTarget.id ? e.currentTarget.id:'暂无联系方式',
-      showCancel: false,
-      confirmText: "我知道了"
+    wx.makePhoneCall({
+      phoneNumber: e.currentTarget.id //仅为示例，并非真实的电话号码
     })
+    // wx.showModal({
+    //   title: '联系客服',
+    //   content: e.currentTarget.id ? e.currentTarget.id:'暂无联系方式',
+    //   showCancel: false,
+    //   confirmText: "我知道了"
+    // })
   },
   openMap: function () {
     var that = this

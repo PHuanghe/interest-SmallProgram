@@ -15,7 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //this.getList(true)
+    this.getList(true)
   },
 
   /**
@@ -29,7 +29,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getList(true)
+    //this.getList(true)
   },
 
   /**
@@ -58,7 +58,7 @@ Page({
    */
   onReachBottom: function (res) {
     if (!this.data.noMore) {
-      this.getList()
+      this.getList(false)
     }
   },
 
@@ -97,15 +97,23 @@ Page({
       method: "POST",
       data: json,
       success: res => {
-        if (res.data.length <= 0) {
+        var list = that.data.list.concat(res.data)
+        if (res.data.length < 10){
           that.setData({
-            noMore: true
+            noMore: true,
+            list:list
           })
+          return ;
         }
         that.setData({
-          list: that.data.list.concat(res.data),
+          list: list,
           page: that.data.page + 1
         })
+        // if (res.data.length <= 0) {
+        //   that.setData({
+        //     noMore: true
+        //   })
+        // }
       }
     })
   },

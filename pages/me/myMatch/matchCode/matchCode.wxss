@@ -17,7 +17,7 @@
   color: #3498db;
 }
 image{
-  background-color: red;
+  background-color: rgba(252,157,154,0.2);
   width: 400rpx;
   height: 400rpx;
 }

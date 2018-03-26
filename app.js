@@ -6,8 +6,7 @@ App({
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-
+    wx.setStorageSync('logs', logs)  
     // 登录
     wx.login({
       success: res => {
@@ -154,9 +153,7 @@ App({
       header: { "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8" },
       success: res => {
         if (res.data.status!=1){
-          wx.showToast({
-            title: res.data.msg,
-          })
+          that.errorToast(res.data.msg)
           return false;
         }
         options.success(res.data)
@@ -177,5 +174,12 @@ App({
   shareInfo:{
     title: '钓鱼人的钓鱼神器，关注领红包',
     path: '/pages/index/index'
+  },
+  //错误提示
+  errorToast:function(msg){
+    wx.showToast({
+      title: msg,
+      image:'/images/ts-icon.png'
+    })
   }
 })

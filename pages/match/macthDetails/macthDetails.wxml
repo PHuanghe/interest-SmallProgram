@@ -54,14 +54,26 @@
     <view class="item ft26">
         <span>比赛场次：</span>{{match.session}}
     </view> 
+    <view class="item ft26" bindtap='tel' id="{{match.mobile}}">
+        <span>赛场电话：</span>{{match.mobile}}
+    </view> 
   </view>
 
   <view class="dad">
+      <view class="child">
+       <view class="title">
+          赛场位置图
+       </view>
+        <image src='{{match.positionImg}}' mode='widthFix'></image>
+    </view>
     <view class="child">
        <view class="title">
           赛事介绍
        </view>
-       <text>{{match.matchDesc}}</text>
+       <block wx:for="{{match.matchDesc}}">
+        <text wx:if="{{item.type=='text'}}" class="ft28">{{item.content}}</text>
+        <image wx:if="{{item.type=='img'}}" src='{{item.content}}' mode='widthFix'></image>
+       </block>
     </view>
     <view class="child">
       <view class="title">

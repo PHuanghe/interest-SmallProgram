@@ -28,9 +28,9 @@
   </view>
     <view class="code t-c pd20">
       <view class="ft26">鱼票二维码</view>
-      <image src="{{imagePath}}"></image>
+      <image src='{{imagePath}}'></image>
       <view class="canvas-box">
-        <canvas  hidden="{{canvasHidden}}" style="width: 686rpx;height: 686rpx;background:#f1f1f1;" canvas-id="mycanvas"/>
+        <canvas   style="width: 685rpx;height: 685rpx;" canvas-id="mycanvas"/>
       </view>
     </view>
     <view class="tail t-c ft28 bgGreen" wx:if="{{info.status==1}}">

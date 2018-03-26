@@ -16,7 +16,10 @@ Page({
     latitude: 0,
     longitude: 0,
     address: "",
-    pontList: []
+    pontList: [],
+    isLoading:true,
+    isData:true,
+    page:1
   },
   getBanner: function () {
     var that = this
@@ -87,14 +90,16 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    
+    if (this.data.isData) {
+      this.getNearbyPond();
+    }
   },
 
   /**
@@ -156,17 +161,40 @@ Page({
     })
   },
   getNearbyPond: function () {
-    var that = this
+    var that = this;
+    if (!that.data.isLoading) {
+      return false;
+    } else {
+      that.setData({
+        isLoading: false
+      })
+    }
     app.http({
       url: "/app/qudiaoyu/getNearbyPond",
       method: "POST",
       data: {
         lat: that.data.latitude,
-        lon: that.data.longitude
+        lon: that.data.longitude,
+        page:that.data.page,
+        isQuality:1
       },
       success: res => {
+        var pontList = that.data.pontList.concat(res.data);
+        if (res.data.length<10){
+          that.setData({
+            isData:false,
+            pontList: pontList
+          })
+          return false;
+        }
         that.setData({
-          pontList: res.data
+          pontList: pontList,
+          page:that.data.page+1
+        })
+      },
+      complete: res => {
+        that.setData({
+          isLoading: true
         })
       }
     })

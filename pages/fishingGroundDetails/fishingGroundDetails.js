@@ -18,7 +18,8 @@ Page({
       fishMessage:[],
       isInfo:true,
       fishTicket:'',
-      couponList:[]
+      couponList:[],
+      isOrder:true
   },
 
   /**
@@ -159,6 +160,9 @@ Page({
       success(data) {
         var anglingSite = data.data
         anglingSite.species = anglingSite.speciesId.join("，")
+        wx.setNavigationBarTitle({
+          title: anglingSite.name,
+        })
         that.setData({
           anglingSite: anglingSite
         })
@@ -285,9 +289,16 @@ Page({
   //购买鱼票
   pay:function(e){
     var that = this
-    var ticketId = e.currentTarget.dataset.id
+    var ticketId = e.currentTarget.dataset.id;
     var tickets = [{ ticketId: ticketId, amount: 1 }];
-    tickets = JSON.stringify(tickets)
+    tickets = JSON.stringify(tickets);
+    if(!that.data.isOrder){
+       return false; 
+    }else{
+      that.setData({
+        isOrder:false
+      })
+    }
     app.http({
       url: '/app/pond/order',
       type: 'POST',
@@ -296,7 +307,7 @@ Page({
         pondId: that.data.pondId,
         paymentMethod:3
       },
-      success(data) {
+      success:function(data) {
         var data = data.data.url
         wx.requestPayment(
           {
@@ -306,11 +317,25 @@ Page({
             'signType': data.signType,
             'paySign': data.paySign,
             success: function (res) {
-              wx.showToast({
-                title: '购买成功',
+              wx.showModal({
+                title: "购买成功",
+                content: '您可以在我的鱼票中查看',
+                showCancel:false,
+                confirmText:'我知道了'
               })
-             }  
+            },
+            fail: function (res) {
+              // wx.showModal({
+              //   title: '错误提示',
+              //   content: JSON.stringify(res),
+              // })
+            }  
           })
+      },
+      complete:function(){
+        that.setData({
+          isOrder: true
+        })
       }
     })
   },

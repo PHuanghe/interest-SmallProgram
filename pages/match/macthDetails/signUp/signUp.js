@@ -6,7 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    matchId:''
+    matchId:'',
+    isOrder:true,
+    context:"提交报名"
+
   },
 
   /**
@@ -73,6 +76,14 @@ Page({
     if (!that.check(info)){
       return
     }
+    if(!that.data.isOrder){
+      return false;
+    }else{
+      that.setData({
+        isOrder:false,
+        context:"提交中。。。"
+      })
+    }
     info.matchId = that.data.matchId
     app.http({
       url: "/app/match/order",
@@ -85,25 +96,25 @@ Page({
           return false
         }
         that.toSuccess()
-      }  
+      },
+      complete:function(){
+        that.setData({
+          context:"提交报名",
+          isOrder:'true'
+        })
+      } 
     })
   },
   check: function (user) {
     if (user.name == "" || user.name == null) {
-      wx.showToast({
-        title: '用户名不能为空',
-      })
+      app.errorToast("用户名不能为空")
       return false;
 
     } else if (!(/^1(3|4|5|7|8)\d{9}$/.test(user.mobile))) {
-      wx.showToast({
-        title: '手机号有误',
-      })
+      app.errorToast("手机号有误")
       return false;
     } else if (!/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(user.cardNo) && user.cardNo!='') {
-      wx.showToast({
-        title: '身份证号有误',
-      })
+      app.errorToast("身份证号有误")
       return false;
     }else {
       return true;
@@ -126,6 +137,7 @@ Page({
   toSuccess:function(){
     wx.showToast({
       title: '报名成功',
+      mask:true
     })
     setTimeout(function () {
       wx.redirectTo({

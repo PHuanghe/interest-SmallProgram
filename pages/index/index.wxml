@@ -56,7 +56,7 @@
   </view>
   <view class='list-fisheries'>
     <view class='list-title'>
-      附近钓场
+      精选钓场
       <navigator class='more' open-type="switchTab" url="../fisheries-list/fisheries-list">
       更多<span class="iconfont icon-xiangyou"></span>
       </navigator>

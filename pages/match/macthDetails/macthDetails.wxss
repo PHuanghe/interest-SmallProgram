@@ -61,6 +61,11 @@ image{
   flex-shrink:0;
   margin-left: 1%;
 }
+.li text{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
 .ul image{
   height: 60rpx;
   width: 60rpx;
@@ -87,6 +92,9 @@ image{
   padding: 0 20rpx;
   font-size: 42rpx;
 }
+.item span{
+  width: 140rpx;
+}
 .dad{
   padding: 0 20rpx;
 }
@@ -99,7 +107,10 @@ image{
   font-size: 28rpx;
   color: #666;
 }
-
+.dad .child image{
+  width: 100%;
+  margin: 10rpx 0;
+}
 .tail{
   position: fixed;
   bottom: 0;

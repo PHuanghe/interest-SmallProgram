@@ -48,3 +48,6 @@ page{
 .bgRed{
   background-color: #E51C23;
 }
+.canvas-box{
+  margin-top: 20rpx;
+}
