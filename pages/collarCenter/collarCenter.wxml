@@ -1,0 +1,2 @@
+<!--pages/collarCenter/collarCenter.wxml-->
+<web-view src="https://www.funfishinghome.com/Html/coupon/index.html?type=0&tokenId={{token}}"></web-view>
