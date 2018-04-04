@@ -75,9 +75,9 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-    return app.shareInfo
-  },
+  // onShareAppMessage: function () {
+  //   return app.shareInfo
+  // },
   switchNav: function (e) {
     this.setData({
       page: 1,

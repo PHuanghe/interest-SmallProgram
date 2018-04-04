@@ -171,10 +171,10 @@ App({
     })
   },
   //分享信息
-  shareInfo:{
-    title: '钓鱼人的钓鱼神器，关注领红包',
-    path: '/pages/index/index'
-  },
+  // shareInfo:{
+  //   title: '钓鱼人的钓鱼神器，关注领红包',
+  //   imageUrl:'/images/share.jpg'
+  // },
   //错误提示
   errorToast:function(msg){
     wx.showToast({

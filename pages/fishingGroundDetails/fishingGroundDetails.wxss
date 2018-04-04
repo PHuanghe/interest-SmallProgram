@@ -115,7 +115,7 @@ page{
   background-color: #fff;
 }
 .ticket{
-  padding: 330rpx 20rpx 20rpx 20rpx;
+  padding: 410rpx 20rpx 20rpx 20rpx;
 }
 .ticket .dad .title{
   font-size: 30rpx;

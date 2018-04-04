@@ -27,6 +27,7 @@ Page({
     ],
     context:"下拉加载更多",
     isLoading:true,
+    listLength:0
   },
 
   /**
@@ -85,15 +86,18 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return app.shareInfo
+    return {
+      title: '钓鱼人的钓鱼神器，关注领红包',
+      imageUrl: '/images/share.jpg'
+    }
   },
   init:function(){
     var that = this
     var timer = setInterval(function () {
       if (app.globalData.tokenId) {
         clearInterval(timer);
-        that.resetCondition()
-        that.getNearbyPond()
+        that.resetCondition();
+        that.getNearbyPond();
       }
     }, 300)
   },
@@ -214,7 +218,8 @@ Page({
       },
       complete: res =>{
         that.setData({
-          isLoading: true
+          isLoading: true,
+          listLength: that.data.pontList.length
         })
         wx.hideLoading()
       }

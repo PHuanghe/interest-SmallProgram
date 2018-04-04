@@ -14,7 +14,8 @@ Page({
     ],
     navOn: 1,
     page:1,
-    ticket:[]
+    ticket:[],  
+    isInfo:true
   },
 
   /**
@@ -71,13 +72,14 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-    return app.shareInfo
-  },
+  // onShareAppMessage: function () {
+  //   // return app.shareInfo
+  // },
   switchNav: function (e) { 
     this.setData({
       page: 1,
-      ticket:[]
+      ticket:[],
+      isInfo:true
     })
     this.getMyTicket(e.currentTarget.dataset.id)
   },

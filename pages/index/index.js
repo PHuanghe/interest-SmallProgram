@@ -19,7 +19,8 @@ Page({
     pontList: [],
     isLoading:true,
     isData:true,
-    page:1
+    page:1,
+    isPondLoading:true
   },
   getBanner: function () {
     var that = this
@@ -39,10 +40,10 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    wx.showLoading({
-      title: '加载中',
-      mask:true
-    })
+    // wx.showLoading({
+    //   title: '加载中',
+    //   mask:true
+    // })
     var timer = setInterval(function () {
       that.setData({
         address: app.globalData.address,
@@ -106,7 +107,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return app.shareInfo
+    return {
+      title: '钓鱼人的钓鱼神器，关注领红包',
+      imageUrl: '/images/index.jpg'
+    }
   },
   getAddress: function () {
     var that = this;
@@ -160,6 +164,11 @@ Page({
       url: '../match/match',
     })
   },
+  collarCenter:function(){
+    wx.navigateTo({
+      url: '../collarCenter/collarCenter',
+    })
+  },
   getNearbyPond: function () {
     var that = this;
     if (!that.data.isLoading) {
@@ -194,7 +203,8 @@ Page({
       },
       complete: res => {
         that.setData({
-          isLoading: true
+          isLoading: true,
+          isPondLoading:false
         })
       }
     })
@@ -233,7 +243,6 @@ Page({
         that.setData({
           hotList: res.data
         })
-        wx.hideLoading()
       }
     }) 
   }

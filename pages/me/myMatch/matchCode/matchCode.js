@@ -62,15 +62,15 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-    return app.shareInfo
-  },
+  // onShareAppMessage: function () {
+  //   return app.shareInfo
+  // },
   //适配不同屏幕大小的canvas
   setCanvasSize: function () {
     var size = {};
     try {
       var res = wx.getSystemInfoSync();
-      var scale = 750 / 685;//不同屏幕下canvas的适配比例；设计稿是750宽
+      var scale = 750 / 385;//不同屏幕下canvas的适配比例；设计稿是750宽
       var width = res.windowWidth / scale;
       var height = width;//canvas画布为正方形
       size.w = width;
@@ -83,7 +83,7 @@ Page({
   createQrCode: function (url, canvasId, cavW, cavH) {
     //调用插件中的draw方法，绘制二维码图片
     QR.api.draw(url, canvasId, cavW, cavH);
-    this.getCodeImage(canvasId)
+    //this.getCodeImage(canvasId)
   },
   getCodeImage: function (canvasId){
     var that = this;

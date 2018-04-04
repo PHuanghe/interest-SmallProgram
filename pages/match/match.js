@@ -35,8 +35,7 @@ Page({
       title: '加载中',
     })
     this.getParams();
-    this.resetCondition()
-    this.getNearbyPond() 
+    this.init();
   },
 
   /**
@@ -45,7 +44,16 @@ Page({
   onReady: function () {
 
   },
-
+  init: function () {
+    var that = this;
+    var timer = setInterval(function () {
+      if (app.globalData.tokenId) {
+        clearInterval(timer);
+        that.resetCondition();
+        that.getNearbyPond(); 
+      }
+    }, 300)
+  },
   /**
    * 生命周期函数--监听页面显示
    */
@@ -89,7 +97,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return app.shareInfo
+    return {
+      title: '钓鱼人的钓鱼神器，关注领红包',
+      imageUrl: '/images/saishi.jpg'
+    }
   },
   //获取筛选条件
   getParams: function () {

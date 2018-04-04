@@ -227,3 +227,11 @@ swiper image{
   right: 0;
   top: 0;
 }
+.loading {
+  text-align: center;
+  padding: 50rpx 0 400rpx;
+}
+.loading .iconfont{
+  font-size: 38rpx;
+  color: #666;
+}

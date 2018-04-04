@@ -79,7 +79,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return app.shareInfo
+    return {
+      title: '钓鱼人的钓鱼神器，关注领红包',
+      imageUrl: '/images/index.jpg'
+    }
   },
   customerService: function () {
     wx.makePhoneCall({

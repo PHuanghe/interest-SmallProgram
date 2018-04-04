@@ -32,7 +32,7 @@ Page({
     this.getFishTicket();
     this.getFishingGroundDetails();
     this.getInteractionInfo();
-    this.getCouponId()
+    this.getCouponId();
   },
 
   /**
@@ -87,7 +87,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return app.shareInfo
+    return {
+      title: '钓鱼人的钓鱼神器，关注领红包',
+      imageUrl: '/images/share.jpg'
+    }
   },
   //顶部切换
   switchNav:function(e){
@@ -290,6 +293,11 @@ Page({
   pay:function(e){
     var that = this
     var ticketId = e.currentTarget.dataset.id;
+    var money = e.currentTarget.dataset.money
+    wx.navigateTo({
+      url: 'payFishTicket/payFishTicket?pondId=' + that.data.pondId + '&ticketId=' + ticketId + '&money=' + money,
+    })
+    return;
     var tickets = [{ ticketId: ticketId, amount: 1 }];
     tickets = JSON.stringify(tickets);
     if(!that.data.isOrder){

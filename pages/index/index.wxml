@@ -28,6 +28,10 @@
         <image src="../../images/icon-4.png"></image>
         <view>钓鱼赛事</view>
       </view>
+      <view class='flex-item' bindtap='collarCenter'>
+        <image src="../../images/icon_5.png"></image>
+        <view>领卷中心</view>
+      </view>
     </view>
   </view>
    <view class='list-fisheries' wx:if="{{hotList.length>0}}">
@@ -92,6 +96,9 @@
           <view class='distance font-normal'>{{item.distance}}km</view>
         </view>
       </view>
+    </view>
+    <view class="loading" wx:if="{{isPondLoading}}">
+      <view class="iconfont icon-kanbaozhi"> 加载中...</view>
     </view>
   </view>
 </view>

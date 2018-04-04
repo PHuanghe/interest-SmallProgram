@@ -11,13 +11,13 @@
   line-height: 80rpx;
   color: #FFF;
   border-radius: 8rpx;
-  opacity: 0.6;
+  margin-bottom: 20rpx;
 }
 .left{
   line-height: 160rpx;
   padding: 0 40rpx;
   background-color: #97DDFF;
-  font-size: 50rpx;
+  font-size: 42rpx;
 }
 .right{
   padding-left: 40rpx;
@@ -26,4 +26,8 @@
   display: block;
   font-size: 30rpx;
   color: #000;
+}
+
+.unavailable{
+  opacity: 0.3;
 }

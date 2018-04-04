@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/collarCenter/collarCenter",
     "pages/match/input/input",
     "pages/advertisement/Advertisement",
     "pages/match/input/score/score",

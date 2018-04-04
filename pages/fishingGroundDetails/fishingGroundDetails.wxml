@@ -20,9 +20,9 @@
       <view class="n-item {{navOn==item.id?'on':''}}" bindtap='switchNav' data-id="{{item.id}}">{{item.text}}</view>
     </block>  
   </view>
-  <!-- <view class="count" wx:if="{{navOn==1}}">
+   <view class="count" wx:if="{{navOn==1}}">
     您有 {{couponList.length}} 张优惠券可以使用
-  </view> -->
+  </view> 
 </view>
 
 <!-- //购票 -->
@@ -38,7 +38,7 @@
         <text>{{item.name}}</text>
         <text>{{item.description}}</text>
       </view>
-      <view class="pay" bindtap='pay' data-id="{{item.ticketId}}">购买</view>
+      <view class="pay" bindtap='pay' data-id="{{item.ticketId}}" data-money="{{item.price}}">购买</view>
     </view>
   </view>
   <view class="dad" wx:if="{{fishTicket.special.length>0}}">
@@ -52,7 +52,7 @@
         <text>{{item.name}}</text>
         <text>{{item.description}}</text>
       </view>
-      <view class="pay" bindtap='pay' data-id="{{item.ticketId}}">购买</view>
+      <view class="pay" bindtap='pay' data-id="{{item.ticketId}}" data-money="{{item.price}}">购买</view>
     </view>
   </view>
 </view>

@@ -14,7 +14,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      id: options.couponId
+      money: options.money
     })
     this.getCouponId();
   },
@@ -73,11 +73,28 @@ Page({
         //   return
         // }
         // var couponList = that.data.couponList.concat(data.data)
+        var couponList = data.data
+        for (var i = 0; i < couponList.length;i++){
+          couponList[i].isCoupon = Number(that.data.money) >= Number(couponList[i].spendMoney);
+        }
         that.setData({
-          couponList: data.data,
+          couponList: couponList,
         })
       }
     })
+  },
+  toPay:function(e){
+    var couponUserId = e.currentTarget.id;
+    var pages = getCurrentPages();
+    var lastpage = pages[pages.length - 2];
+    console.log(e)
+    lastpage.setData({
+      couponUserId: couponUserId,
+      couponMoney: e.currentTarget.dataset.id
+    })
+    wx.navigateBack({
+      delta: 1
+    })  
   },
   /**
    * 用户点击右上角分享

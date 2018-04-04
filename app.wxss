@@ -127,7 +127,27 @@ page{
   font-size: 100rpx;
 }
 
-.canvas-box{
-  position: absolute;
-  top: -99999px;
+ .canvas-box{
+  text-align: center;
+
+} 
+ .canvas-box canvas{
+     display: inline-block;
+ }
+.jiazai{
+  width: 30rpx;
+  height: 30rpx;
+  animation: rotate 1s steps(12, end) infinite;
+  
+}
+
+@keyframes rotate {
+    0% {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+    transform: rotate3d(0, 0, 1, 0deg);
+    }
+    100% {
+        -webkit-transform: rotate3d(0, 0, 1, 360deg);
+        transform: rotate3d(0, 0, 1, 360deg);
+    }
 }

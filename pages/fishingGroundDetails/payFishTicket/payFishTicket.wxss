@@ -27,7 +27,13 @@
 .coupon view span{
   font-size: 30rpx;
 }
-
+.coupon .discount{
+  width: 460rpx;
+  float: left;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
 
 .title{
   padding: 20rpx;
