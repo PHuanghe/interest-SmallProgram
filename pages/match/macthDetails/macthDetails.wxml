@@ -109,4 +109,10 @@
     <span wx:if="{{match.status==3}}">进行中</span>
     <span wx:if="{{match.status==4}}">已结束</span>
   </view>
+  <navigator class='tel index' open-type="switchTab" url="/pages/index/index">
+    <view class="telItem">
+      <span class="iconfont icon-shouyetubiaosvg59"></span>
+      <view class="ft26">首页</view>
+    </view> 
+  </navigator>
 </view>

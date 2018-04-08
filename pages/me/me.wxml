@@ -2,7 +2,7 @@
   <view class='background'>
     <image class='user-avatar' src="{{user.userPhoto}}"></image>
     <view class='user-name font-b'>{{user.userName}}</view>
-    <view class='level'>lv.{{user.level}}</view>
+    <view class='level'>Lv.{{user.level}}</view>
   </view>
   <view class='my-model'>
     <view class='title'>我的鱼票</view>

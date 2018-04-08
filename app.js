@@ -6,16 +6,8 @@ App({
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)  
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        // console.log(res)
-        that.globalData.code = res.code;
-        that.getUserInfoOnce();
-      }
-    })
+    wx.setStorageSync('logs', logs) 
+    that.wxLogin()
     // 获取用户信息
     // wx.getSetting({
     //   success: res => {
@@ -45,10 +37,14 @@ App({
       withCredentials: true,
       success: res => {
         // 可以将 res 发送给后台解码出 unionId
-        that.globalData.userInfo = res.userInfo
-        that.globalData.encryptedData = res.encryptedData
-        that.globalData.iv = res.iv
-        that.getAddress()
+        that.globalData.userInfo = res.userInfo;
+        that.globalData.encryptedData = res.encryptedData;
+        that.globalData.iv = res.iv;
+        if (that.globalData.latitude==null){
+          that.getAddress();
+        }else{
+          that.miliLogin(that.globalData.latitude, that.globalData.longitude, that.globalData.para);
+        }
 
         // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
         // 所以此处加入 callback 以防止这种情况
@@ -83,20 +79,7 @@ App({
       success: function (res) {
         that.globalData.latitude = res.latitude
         that.globalData.longitude = res.longitude
-        that.http({
-          url: "/app/web/miniLogin",
-          method: "POST",
-          data: {
-            code: that.globalData.code,
-            iv: that.globalData.iv,
-            encryptedData: that.globalData.encryptedData,
-            lat: res.latitude,
-            lon: res.longitude,
-          },
-          success: res => {
-            that.globalData.tokenId = res.data.tokenId
-          }
-        })
+        that.miliLogin(res.latitude, res.longitude)
         that.map()
       },
       fail: function (res) {
@@ -136,7 +119,8 @@ App({
     });
   },
   http: function (options) {
-    var that = this,json
+    var that = this, json;
+    that.globalData.para = options;
     if (!that.globalData.tokenId){
       json = options.data
     } else if (options.data){
@@ -152,6 +136,13 @@ App({
       data: json,
       header: { "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8" },
       success: res => {
+        if (res.data.status==-1000){
+          wx.showLoading({
+            title: '正在重新登录',
+          })
+          that.wxLogin();
+          return;
+        }
         if (res.data.status!=1){
           that.errorToast(res.data.msg)
           return false;
@@ -166,6 +157,45 @@ App({
       complete:res=>{
         if (options.complete) {
           options.complete(res)
+        }
+      }
+    })
+  },
+  wxLogin:function(){
+    // 登录
+    var that = this;
+    wx.login({
+      success: res => {
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        that.globalData.code = res.code;
+        that.getUserInfoOnce();
+      }
+    })
+  },
+  miliLogin:function(lat,lon,para){
+    var that = this;
+    that.http({
+      url: "/app/web/miniLogin",
+      method: "POST",
+      data: {
+        code: that.globalData.code,
+        iv: that.globalData.iv,
+        encryptedData: that.globalData.encryptedData,
+        lat: lat,
+        lon: lon
+      },
+      success: res => {
+        if (res.status != 1) {
+          wx.showToast({
+            title: res.msg,
+          })
+          return;
+        }
+        that.globalData.tokenId = res.data.tokenId;
+        if (para){
+          that.http(para);
+          that.globalData.para = null;
+          wx.hideLoading();
         }
       }
     })

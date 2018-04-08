@@ -38,7 +38,7 @@ Page({
     var timer = setInterval(function () {
       if (app.globalData.tokenId) {
         clearInterval(timer);
-        _this.getNum();
+        //_this.getNum();
         _this.getUserInfo();
       }
     }, 300)
@@ -120,6 +120,7 @@ Page({
         that.setData({
           user: res.data
         })
+        that.getNum();
       }
     })
   }

@@ -119,7 +119,7 @@ image{
   display: flex;
   height: 100rpx;
 }
-.tail .tel{
+.tel{
   text-align: center;
   background-color: #FF8C00;
   color: #FFF;
@@ -128,6 +128,12 @@ image{
   justify-content: center;
   width: 100rpx;
   height: 100rpx;
+}
+.tail .index {
+  background-color: rgb(64,133,246);
+}
+.tail .index .iconfont{
+  font-size: 38rpx;
 }
  .btn{
   line-height: 100rpx;

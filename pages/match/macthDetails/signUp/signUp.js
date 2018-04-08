@@ -71,7 +71,12 @@ Page({
   //   return app.shareInfo
   // },
   sub:function(e){
-    var that = this
+    wx.redirectTo({
+      url: '/pages/success/success'
+    })
+    return;
+    var that = this;
+
     var info = e.detail.value
     if (!that.check(info)){
       return

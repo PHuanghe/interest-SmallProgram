@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    url:''
   },
 
   /**
@@ -17,8 +17,9 @@ Page({
     var timer = setInterval(function () {
       if (app.globalData.address != "中国" && app.globalData.tokenId) {
         that.setData({
-          token: app.globalData.tokenId
+          url: 'https://www.funfishinghome.com/Html/coupon/index.html?type=0&tokenId='+app.globalData.tokenId
         })
+        clearInterval(timer);
       }
     }, 300)
   },

@@ -2,9 +2,10 @@
 <view class="list">
   <view class='item {{item.isCoupon?"":"unavailable"}}' bindtap='{{item.isCoupon?"toPay":""}}' wx:for="{{couponList}}" wx:if="{{couponList.length>0}}" id="{{item.couponUserId}}" data-id="{{item.couponMoney}}">
     <view class="left">
-      {{item.couponName}}
+      {{item.couponMoney}}元
     </view>
     <view class="right">
+      <text>{{item.couponName}}</text>
       <text>满{{item.spendMoney}}元减{{item.couponMoney}}元</text>
       <text>将于{{item.validEndTime}}过期</text> 
     </view>   

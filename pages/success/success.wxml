@@ -2,5 +2,6 @@
 <view class="main">
   <span class="iconfont icon-kuaile"></span>
   <view class="cGreen">恭喜您,报名成功</view>
-  <navigator open-type="redirect" url="/pages/me/myMatch/myMatch?id=0" class="btn">查看我的赛事</navigator>
+  <navigator open-type="redirect" url="/pages/me/myMatch/myMatch?id=0" class="btn">我的赛事</navigator>
+  <navigator open-type="switchTab" url="/pages/index/index" class="btn">回到首页</navigator>
 </view>
