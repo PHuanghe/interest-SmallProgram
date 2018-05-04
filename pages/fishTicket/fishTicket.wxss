@@ -1,6 +1,6 @@
 /* pages/fishTicket/fishTicket.wxss */
 page{
-  background-color: #F8F8F8
+  background-color: #F0F0F0;
 }
 .nav{
   display: flex;
@@ -12,6 +12,10 @@ page{
   left: 0;
   box-shadow:0px 15rpx 10rpx -15rpx #000;
   z-index: 88;
+  transition: 0.8s;
+}
+.op4{
+  opacity: 0.4;
 }
 .dad{
   padding: 80rpx 20rpx 20rpx 20rpx;

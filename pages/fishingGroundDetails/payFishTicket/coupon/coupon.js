@@ -14,7 +14,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      money: options.money
+      money: options.money,
+      pondId: options.pondId
     })
     this.getCouponId();
   },
@@ -63,8 +64,11 @@ Page({
   getCouponId: function () {
     var that = this
     app.http({
-      url: '/app/pond/coupon',
+      url: '/app/pond/minicoupon',
       type: 'GET',
+      data: {
+        pondId: that.data.pondId
+      },
       success(data) {
         // if (data.data.length <= 0) {
         //   that.setData({

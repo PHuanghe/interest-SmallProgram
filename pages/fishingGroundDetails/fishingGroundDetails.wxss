@@ -159,6 +159,81 @@ page{
     text-overflow:ellipsis;
     white-space: nowrap;
 }
+.ticket .dad .childcp{
+  display: flex;
+  align-items: center;
+  margin: 20rpx 0;
+  border: 1px solid #999;
+  -webkit-box-shadow: 0 2rpx 10rpx rgba(39,54,78,0.4);
+  box-shadow: 0 2rpx 10rpx rgba(39,54,78,0.4);
+  position: relative;
+  color: #000;
+  background-color: #fff;
+}
+
+.ticket .dad .childcp .childcpin{
+  border: 1px solid #999;
+  width: 100%;
+  margin: 30rpx 40rpx;
+  display: flex;
+  padding:30rpx 25rpx;
+  text-align:center;
+}
+.ticket .dad .childcp .childcpin .price{
+  text-align: center;
+  margin: 10rpx 0;
+  color: #E51C23;
+}
+.ft40{
+  font-size: 40rpx;
+  line-height: 70rpx;
+}
+.ticket .dad .childcp .childcpin .describe{
+  padding: 0 20rpx;
+  font-size:21rpx;
+}
+.ticket .dad .childcp .childcpin .describe text{
+    display: block;
+    line-height: 60rpx;
+    width: 300rpx;
+    height: 55rpx;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    font-weight:bold;
+}
+.getcoupons{
+  padding:10rpx 15rpx;
+  background-color:#E51C23;
+  color:#fff;
+  height:50rpx;
+  width:140rpx;
+  text-align:center;
+  font-size:34rpx;
+  margin-top:20rpx;
+}
+
+.getcouponsget{
+  padding:10rpx 15rpx;
+  background-color:#666;
+  color:#fff;
+  height:50rpx;
+  width:140rpx;
+  text-align:center;
+  font-size:34rpx;
+  margin-top:20rpx;
+}
+
+.getcouponsover{
+  padding:10rpx 15rpx;
+  background-color:#000;
+  color:#fff;
+  height:50rpx;
+  width:140rpx;
+  text-align:center;
+  font-size:34rpx;
+  margin-top:20rpx;
+}
 .putTheFish {
   padding: 330rpx 20rpx 20rpx 20rpx;
 }

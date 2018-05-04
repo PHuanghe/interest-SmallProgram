@@ -12,7 +12,7 @@ Page({
       { id: 2, text: '历史赛事' },
     ],
     navOn: 0,
-    array: ['第一场', '第二场'],
+    array: [],
     index:0,
     match:[],
     page:1,
@@ -69,7 +69,9 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    if(this.data.isData){
+      this.getMacthList()
+    }
   },
 
   /**
@@ -84,19 +86,21 @@ Page({
       match: [],
       navOn: e.currentTarget.dataset.id
     })
-    this.getMacthList()
+    this.getMacthList();
   },
   bindPickerChange:function(e){
-    console.log('picker发送选择改变，携带值为', e)
-    var url = this.data.url
+    var url = e.currentTarget.dataset.url
     app.match = this.data.match[e.currentTarget.id]
-    app.match.value = parseInt(e.detail.value)+1
+    app.match.value = parseInt(e.detail.value)+1;
+    if (url == 'ranking'&&parseInt(e.detail.value) == app.match.array.length){
+      app.match.value = 0;
+    }
     wx.navigateTo({
       url: url + '/' + url,
     })
   },
   matchCode:function(e){
-    app.match = this.data.match[e.currentTarget.dataset.index]
+    app.match = this.data.match[e.currentTarget.dataset.index];
     wx.navigateTo({
       url: 'matchCode/matchCode?code=' + e.target.id
     })
@@ -122,10 +126,28 @@ Page({
         type: that.data.navOn
       },
       success: res => {
-        console.log(res.data)
-        that.setData({
-          match: that.data.match.concat(res.data)
-        })
+        var match = that.data.match.concat(res.data);
+        for(var i=0;i<match.length;i++){
+          if (match[i].session>1){
+            var array = [];
+            for (var j = 1; j <= match[i].session; j++) {
+              array.push('第' + j + '场')
+            }
+            match[i].array = array;
+            match[i].arrays = array.concat(["最终成绩"]);
+          }
+        }
+        if (res.data.length<10){
+          that.setData({
+            match: match,
+            isData:false
+          })
+        }else{
+          that.setData({
+            match: match,
+            page:that.data.page+1
+          })
+        }
       },
       complete:res => {
         that.setData({
@@ -135,17 +157,12 @@ Page({
       }
     })
   },
-  picker:function(e){
-    var that = this
-    var idx = e.currentTarget.id
-    var match = that.data.match
-    var array = []
-    for (var i = 1; i <= match[idx].session;i++){
-        array.push('第'+i+'场')
-    }
-    that.setData({
-      array: array,
-      url: e.currentTarget.dataset.url
+  toPage:function(e){
+    var url = e.currentTarget.dataset.url
+    app.match = this.data.match[e.currentTarget.id]
+    app.match.value = 1
+    wx.navigateTo({
+      url: url + '/' + url,
     })
   }
 })

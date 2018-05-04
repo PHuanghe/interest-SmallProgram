@@ -72,9 +72,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    var that = this
     return {
-      title: '钓鱼人的钓鱼神器，关注领红包',
-      imageUrl: '/images/saishi.jpg'
+      title: that.data.match.name,
+      //imageUrl: '/images/saishi.jpg'
     }
   },
   getMatchInfo:function(id){

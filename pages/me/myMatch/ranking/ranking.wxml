@@ -9,12 +9,16 @@
   </view> 
 </view>
 <view class="my t-c">
-  <view class="title">我的第{{match.value}}场比赛</view>
+  <view class="title" wx:if="{{match.value==0}}">我的总成绩</view>
+  <view class="title" wx:else>我的第{{match.value}}场比赛</view>
   <view class="c9">排名:<span>第{{match.res.sort?match.res.sort:'?'}}名</span></view>
   <view class="c9">成绩:<span>{{match.res.score?match.res.score:'--'}}</span></view>
 </view> 
 <view class="main">
-    <view class="title">
+    <view class="title" wx:if="{{match.value==0}}">
+      最终排名
+    </view>
+    <view class="title" wx:else>
       第{{match.value}}场
     </view>
     <view class="list" wx:if="{{ranking.length>0}}">

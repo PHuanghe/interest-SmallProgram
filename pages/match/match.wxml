@@ -1,6 +1,6 @@
 <!--pages/match/match.wxml-->
 <view class='fisheries-list font-normal'>
-  <view class="fly">
+  <view class="fly {{isLoading?'':'op4'}}">
     <view class='search '>
       <input placeholder='请输入赛事名称' bindinput="ipt">
       <view class='iconfont icon-fangdajing'></view>
@@ -23,7 +23,7 @@
     <view class='filter' hidden='{{filter}}'>
     <view class='filter-type'>赛事类型</view>
     <view class='filter-model'>
-      <view class='model {{pondType == item.typeId? "active":""}}' bindtap='choosePrice' id="{{item.typeId}}" wx:key wx:for="{{pond}}">{{item.name}}</view>
+      <view class='model {{pondType == item.typeId? "active":""}}' bindtap='choosePrice' id="{{item.typeId}}" wx:key wx:for="{{pond}}" wx:key="item.name">{{item.name}}</view>
       <view class='model {{pondType == 0? "active":""}}' bindtap='choosePrice' id="0">全部</view>
     </view>
     <view class='filter-type'>赛事状态</view>
@@ -37,7 +37,7 @@
   </view>
   </view>
   <view class='ul'>
-    <navigator url="macthDetails/macthDetails?id={{item.matchId}}" class="li" wx:for="{{pontList}}" >
+    <navigator url="macthDetails/macthDetails?id={{item.matchId}}" class="li" wx:for="{{pontList}}" wx:key>
       <view class="cover">
         <view class="label"><span>{{item.typeName}}</span></view> 
         <image src='{{item.coverImg}}' mode='aspectFill'></image>

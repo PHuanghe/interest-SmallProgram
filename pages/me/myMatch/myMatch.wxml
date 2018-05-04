@@ -16,19 +16,22 @@
       </view> 
     </view>
     <view class="bottom">
-      <view class="label" id="{{item.code}}" data-index="{{idx}}" bindtap='matchCode' wx:if="{{navOn!=2}}">参赛码</view>
+      <!--view class="label" id="{{item.code}}" data-index="{{idx}}" bindtap='matchCode' wx:if="{{navOn!=2}}">参赛码</view-->
+      <view id="{{item.code}}" data-index="{{idx}}" wx:if="{{navOn!=2}}"></view>
+        <picker  id="{{idx}}" data-url="drawResults" bindchange="bindPickerChange" value="{{index}}" range="{{item.array}}" wx:if="{{item.session>1&&navOn!=2}}">
+          <view class="label" >抽签结果</view>
+        </picker>      
+      
 
-      <picker bindtap='picker' data-url="drawResults" id="{{idx}}" bindchange="bindPickerChange" value="{{index}}" range="{{array}}" wx:if="{{item.session>1&&navOn!=2}}">
-        <view class="label">抽签结果</view>
-      </picker> 
-      <view bindtap='picker' data-url="ranking" id="{{idx}}" bindchange="bindPickerChange" value="1" class="label" wx:if="{{item.session==1&&navOn!=2}}">抽签结果</view>
+
+      <view bindtap='toPage' data-url="drawResults" id="{{idx}}"  value="1" class="label" wx:if="{{item.session==1&&navOn!=2}}">抽签结果</view>
+
       <navigator class="label" url="showMatch/showMatch?id={{item.matchId}}" wx:if="{{navOn==2}}">秀比赛</navigator>
-      <picker bindtap='picker' data-url="ranking" id="{{idx}}" bindchange="bindPickerChange" value="{{index}}" range="{{array}}" wx:if="{{item.session>1&&navOn==2}}">
-        <view class="label">比赛结果</view>
+      
+      <picker  id="{{idx}}" data-url="ranking" bindchange="bindPickerChange" value="{{index}}" range="{{item.arrays}}" wx:if="{{item.session>1&&navOn==2}}">
+        <view class="label" >比赛结果</view>
       </picker>
-      <view bindtap='picker' data-url="ranking" id="{{idx}}" bindchange="bindPickerChange" value="1" class="label" wx:if="{{item.session==1&&navOn==2}}">比赛结果</view> 
-
-
+      <view bindtap='toPage' data-url="ranking" id="{{idx}}"  value="1" class="label" wx:if="{{item.session==1&&navOn==2}}">比赛结果</view> 
     </view>
   </view>
 </view>

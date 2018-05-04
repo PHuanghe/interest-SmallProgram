@@ -94,6 +94,9 @@ page{
   color: #3b8de3;
   font-size: 38rpx;
   margin-bottom: 10rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 .top .context view{
   font-size: 30rpx;

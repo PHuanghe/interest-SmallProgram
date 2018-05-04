@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "鱼讯信息"
+  "navigationBarTitleText": "鱼讯信息",
+  "enablePullDownRefresh":true
 }

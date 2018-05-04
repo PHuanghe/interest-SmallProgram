@@ -21,27 +21,31 @@
       <view class="item ft26" wx:if="{{info.status==2||info.status==3}}">
           <span>验票时间：</span>{{info.updateTime}}
       </view> 
-      <view class="item ft26" wx:if="{{info.status==2}}">
+      <!-- <view class="item ft26" wx:if="{{info.status==2}}">
           <span>剩余时间：</span>{{info.remainTime}}
-      </view>  
+      </view>   -->
     </view>
   </view>
     <view class="code t-c pd20">
       <view class="ft26">鱼票二维码</view>
       <!-- <image src='{{imagePath}}'></image> -->
-      <view class="canvas-box">
-        <canvas  style="width: 385rpx;height: 385rpx;" canvas-id="mycanvas"/>
+      <view class="canvas-box" wx:if="{{info.status==1}}">
+         <canvas  style="width: 200px;height: 200px;" canvas-id="mycanvas"/> 
+      </view>
+       <view class="canvas-box" style="position: relative;"  wx:if="{{info.status==3 || info.status==2}}">
+         <image  style="width: 160px;height: 160px;" src="../../../images/qrcode.png"></image>
+         <image class='imageal' src="../../../images/verification.png"></image>
       </view>
        <view class="id">鱼票ID:{{info.code}}</view>
     </view>
-    <view class="tail t-c ft28 bgGreen" wx:if="{{info.status==1}}">
-      未使用
+    <view class="tail t-c ft28 bgGreen" bindtap='scanning' wx:if="{{info.status==1}}">
+      请扫描钓场二维码
     </view>
     <view class="tail t-c ft28 bgHui" wx:if="{{info.status==3}}">
       已使用
     </view>
     <view class="tail t-c ft28 bgRed" wx:if="{{info.status==2}}">
-      进行中
+      正在进行中
     </view>
 </view>
 

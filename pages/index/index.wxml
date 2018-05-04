@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class='index font-normal'>
+ <view class='index font-normal'>
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
     <block wx:key wx:for="{{banner}}" wx:for-index="idx">
       <swiper-item>
@@ -30,7 +30,7 @@
       </view>
       <view class='flex-item' bindtap='collarCenter'>
         <image src="../../images/icon_5.png"></image>
-        <view>领卷中心</view>
+        <view>领券中心</view>
       </view>
     </view>
   </view>
@@ -42,7 +42,7 @@
       </navigator>
     </view>
     <view class='list'>
-      <navigator url="../match/macthDetails/macthDetails?id={{item.matchId}}" class="item" bindtap='macthDetails' wx:for="{{hotList}}">
+      <navigator url="../match/macthDetails/macthDetails?id={{item.matchId}}" class="item" bindtap='macthDetails' wx:for="{{hotList}}" wx:key>
         <view class="cover">
           <view class="label"><span>{{item.typeName}}</span></view> 
           <image src='{{item.coverImg}}' mode='aspectFill'></image>
@@ -73,7 +73,7 @@
         </image>
         <view class='fisheries-info'>
           <view class='fisheries-title'>{{item.Name}}
-            <view class='special' wx:if='{{item.isPromotion}}'>特价</view>
+            <view class='special' wx:if='{{item.isPromotion}}'>优惠券</view>
           </view>
           <view class='fisheries-level'>
             <image class='star' src='../../images/star.png'></image>
@@ -92,7 +92,7 @@
         </view>
         <view class='fisheries-price font-b'>
           <view wx:if="{{item.ticket[0].price}}">¥{{item.ticket[0].price}}</view>
-          <view wx:if="{{item.isPromotion==1}}" class="market-price">¥{{item.ticket[0].marketPrice}}</view>
+          <!--view wx:if="{{item.isPromotion==1}}" class="market-price">¥{{item.ticket[0].marketPrice}}</view-->
           <view class='distance font-normal'>{{item.distance}}km</view>
         </view>
       </view>

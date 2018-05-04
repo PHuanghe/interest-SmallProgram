@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "鱼获攻略"
+  "navigationBarTitleText": "鱼获攻略",
+  "enablePullDownRefresh": true
 }

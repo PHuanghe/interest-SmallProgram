@@ -71,12 +71,7 @@ Page({
   //   return app.shareInfo
   // },
   sub:function(e){
-    wx.redirectTo({
-      url: '/pages/success/success'
-    })
-    return;
     var that = this;
-
     var info = e.detail.value
     if (!that.check(info)){
       return
@@ -110,18 +105,24 @@ Page({
       } 
     })
   },
-  check: function (user) {
+  check: function (user) {    
     if (user.name == "" || user.name == null) {
       app.errorToast("用户名不能为空")
       return false;
 
-    } else if (!(/^1(3|4|5|7|8)\d{9}$/.test(user.mobile))) {
+    } else if (!(/^1(3|4|5|7|8|9)\d{9}$/.test(user.mobile))) {
       app.errorToast("手机号有误")
       return false;
-    } else if (!/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(user.cardNo) && user.cardNo!='') {
+    } else if (user.cardNo == '') {
       app.errorToast("身份证号有误")
       return false;
-    }else {
+    }/*
+    else if (!/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(user.cardNo) && user.cardNo != '' && !/^[A-Z]\d{6}[0-9A]$/.test(user.cardNo)) {
+      app.errorToast("身份证号有误")
+      return false;
+    }
+    */
+    else {
       return true;
     }
   },

@@ -6,6 +6,10 @@
   left: 0;
   background-color: #FFF;
   z-index: 10;
+  transition: 0.6s;
+}
+.op4{
+  opacity: 0.4;
 }
 .search{
   background: #FFF;

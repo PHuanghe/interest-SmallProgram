@@ -88,8 +88,6 @@ Page({
         lastpage.data.userList[app.match.index].score = json.score
         lastpage.setData({
           inviteCode: json.inviteCode,
-          mask: false,
-          page:1,
           userList: lastpage.data.userList
         })
         setTimeout(function(){

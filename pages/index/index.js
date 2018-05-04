@@ -20,7 +20,8 @@ Page({
     isLoading:true,
     isData:true,
     page:1,
-    isPondLoading:true
+    isPondLoading:true,
+    imagePath:''
   },
   getBanner: function () {
     var that = this
@@ -91,7 +92,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+      this.initInfo();
   },
 
   /**
@@ -169,7 +170,7 @@ Page({
       url: '../collarCenter/collarCenter',
     })
   },
-  getNearbyPond: function () {
+  getNearbyPond: function (isTop) {
     var that = this;
     if (!that.data.isLoading) {
       return false;
@@ -188,7 +189,12 @@ Page({
         isQuality:1
       },
       success: res => {
-        var pontList = that.data.pontList.concat(res.data);
+        var pontList;
+        if (isTop){
+          pontList = [].concat(res.data);
+        }else{
+          pontList = that.data.pontList.concat(res.data);
+        }
         if (res.data.length<10){
           that.setData({
             isData:false,
@@ -206,6 +212,7 @@ Page({
           isLoading: true,
           isPondLoading:false
         })
+        wx.stopPullDownRefresh();
       }
     })
   },
@@ -227,7 +234,6 @@ Page({
         url: "../fishingGroundDetails/fishingGroundDetails?id=" + img[index].adURL
       })
     }
-
   },
   getHotMatch:function(){
     var that = this 
@@ -245,5 +251,14 @@ Page({
         })
       }
     }) 
+  },
+  initInfo:function(){
+    this.setData({
+      page:1,
+      isData:true
+    })
+    this.getNearbyPond(true);
+    this.getHotMatch();
+    this.getBanner();
   }
 })

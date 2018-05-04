@@ -273,8 +273,11 @@ Page({
   getCouponId:function(){
     var that = this
     app.http({
-      url: '/app/pond/coupon',
+      url: '/app/pond/minicoupon',
       type: 'GET',
+      data: {
+        pondId: that.data.pondId
+      },
       success(data) {
         // if (data.data.length <= 0) {
         //   that.setData({
@@ -344,6 +347,32 @@ Page({
         that.setData({
           isOrder: true
         })
+      }
+    })
+  },
+
+  //抢优惠券
+  takecoupons: function (e) {
+    var that = this
+    var couponId = e.currentTarget.dataset.id;
+    
+    app.http({
+      url: '/app/coupon/getcoupon',
+      type: 'POST',
+      data: {
+        couponId: couponId
+      },
+      success: function (data) {
+        // if (data.data.length <= 0) {
+        //   that.setData({
+        //     isInfo: false
+        //   })
+        //   return
+        // }
+        // var couponList = that.data.couponList.concat(data.data)
+        wx.navigateTo({
+          url: '/pages/fishingGroundDetails/fishingGroundDetails?id=' + that.data.pondId,
+        });
       }
     })
   },

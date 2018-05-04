@@ -15,6 +15,10 @@ Page({
    */
   onLoad: function (options) {
     this.generateCode(options.code);
+    this.setData({
+      match:app.match,
+      code: options.code
+    })
   },
 
   /**
@@ -68,15 +72,19 @@ Page({
   //适配不同屏幕大小的canvas
   setCanvasSize: function () {
     var size = {};
-    try {
+    if (wx.getSystemInfoSync) {
       var res = wx.getSystemInfoSync();
       var scale = 750 / 385;//不同屏幕下canvas的适配比例；设计稿是750宽
       var width = res.windowWidth / scale;
       var height = width;//canvas画布为正方形
       size.w = width;
       size.h = height;
-    } catch (e) {
-      console.log("获取设备信息失败" + e);
+    } else {
+      // 如果希望用户在最新版本的客户端上体验您的小程序，可以这样子提示
+      wx.showModal({
+        title: '提示',
+        content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
+      })
     }
     return size;
   },
@@ -104,7 +112,7 @@ Page({
     }, 1000)
   },
   generateCode:function(code){
-    var size = this.setCanvasSize();
-    this.createQrCode(code, "mycanvas", size.w, size.h);
+    //var size = this.setCanvasSize();
+    this.createQrCode(code, "mycanvas", 200, 200);
   }
 })

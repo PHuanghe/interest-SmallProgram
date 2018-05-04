@@ -29,7 +29,7 @@ App({
     longitude: null,
     address: "中国",
     tokenId: null,
-    configUrl: "https://www.funfishinghome.com"  //192.168.0.138   https://www.funfishinghome.com
+    configUrl: "https://www.funfishinghome.com"  //https://www.funfishinghome.com   
   },
   getUserInfoOnce: function () {
     var that = this

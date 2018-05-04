@@ -1,6 +1,6 @@
 /* pages/fishTicket/fishDetails/fishDetails.wxss */
 page{
-  
+  background-color: #fff;
 }
 
 .context{
@@ -18,7 +18,7 @@ page{
   display: flex;
   align-items: center;
   line-height: 70rpx;
-  border-top: 1px solid #F0F0F8;
+  border-bottom: 1px solid #F0F0F8;
 }
 .item span{
   flex-grow:1
@@ -50,6 +50,19 @@ page{
 }
 .canvas-box{
   margin-top: 20rpx;
+  z-index:1;
+}
+.code{
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.code .imageal{
+  position: absolute;
+  top:0;
+  right:0;
+  width: 130px;
+  height: 130px;
+  z-index:999;
 }
 .id{
   margin: 20rpx 0;

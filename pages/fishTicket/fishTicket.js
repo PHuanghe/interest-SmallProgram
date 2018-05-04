@@ -15,14 +15,17 @@ Page({
     navOn: 1,
     page:1,
     ticket:[],  
-    isInfo:true
+    isInfo:true,
+    isLoading:true,
+    options:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getMyTicket(options.id)
+    this.options = options.id;
+    
   },
 
   /**
@@ -36,7 +39,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.getMyTicket(this.options)
   },
 
   /**
@@ -57,7 +60,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    this.initInfo();
   },
 
   /**
@@ -79,16 +82,22 @@ Page({
     this.setData({
       page: 1,
       ticket:[],
-      isInfo:true
+      isInfo:true,
+      id: e.currentTarget.dataset.id
     })
     this.getMyTicket(e.currentTarget.dataset.id)
   },
   //获取鱼票信息
-  getMyTicket: function (status) {
-    var that = this
-    that.setData({
-      navOn: status
-    })
+  getMyTicket: function (status,isTop) {
+    var that = this;
+    if(!that.data.isLoading){
+      return 
+    }else{
+      that.setData({
+        isLoading:false,
+        navOn: status
+      })
+    }
     app.http({
       url: "/app/pond/miniMyTicket",
       method: "GET",
@@ -97,17 +106,28 @@ Page({
         status: status
       },
       success: res => {
+        var ticket ;
+        if (isTop){
+          ticket = [].concat(res.data)
+        }else{
+          ticket = that.data.ticket.concat(res.data)
+        }
         if (res.data.length <= 0) {
           that.setData({
             isInfo: false
           })
           return;
-        }
-        var ticket = that.data.ticket.concat(res.data)
+        }       
         that.setData({
           ticket: ticket,
           page: that.data.page + 1,
         })
+      },
+      complete:function () {
+        that.setData({
+          isLoading:true
+        })
+        wx.stopPullDownRefresh();
       }
     })
   },
@@ -116,4 +136,11 @@ Page({
       url: 'fishDetails/fishDetails?id=' + e.currentTarget.id,
     })
   },
+  initInfo:function(){
+    this.setData({
+      page:1,
+      isInfo:true
+    })
+    this.getMyTicket(this.data.navOn,true)
+  }
 })

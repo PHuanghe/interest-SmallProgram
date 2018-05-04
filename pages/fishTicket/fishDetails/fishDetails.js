@@ -11,27 +11,75 @@ Page({
     canvasHidden: false,
     maskHidden: true,
     imagePath: '',
+    code:'',
+    pondId:'',
+    options:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getMyTicket(options.id)
+    this.options = options.id;
+    this.getMyTicket(this.options);
   },
-
+  // 扫描钓场二维码
+  scanning: function (){
+    wx.scanCode({
+      success: (resl) => {
+        if (resl.result.startsWith('LMLHPONDID')){
+          this.successfulreturn(resl.result.replace(/[^0-9]/ig, ""));
+        }else{
+          wx.showToast({
+            title: '抱歉！这不是渔场二维码',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+        // this.successfulreturn();
+      }
+    })
+  },
+  successfulreturn: function (pondId){
+    app.http({
+      url: "/app/pond/checkIn2",
+      method: "POST",
+      data: {
+        tokenId: app.globalData.tokenId,
+        code: this.code,
+        pondId: pondId
+      },
+      success: res => {
+        if (res.status==1){
+          wx.showToast({
+            title: '门票检验成功',
+            icon: 'success',
+            duration: 2000
+          })
+        }else{
+          wx.showToast({
+            title: '验票失败',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+        this.getMyTicket(this.options);
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    
+
   },
 
   /**
@@ -79,7 +127,9 @@ Page({
       },
       success: res => {
         var size = that.setCanvasSize();
-        that.createQrCode(res.data.code, "mycanvas", size.w, size.h);
+        that.createQrCode(res.data.code, "mycanvas", 200, 200);
+        this.code = res.data.code;
+        this.pondId = res.data.pondId;
         that.setData({
           info:res.data
         })

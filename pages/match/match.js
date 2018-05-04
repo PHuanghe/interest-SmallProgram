@@ -79,8 +79,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.resetCondition()
-    this.getNearbyPond()
+    //this.resetCondition()
+    this.initInfo()
   },
 
   /**
@@ -288,6 +288,56 @@ Page({
   macthDetails: function () {
     wx.navigateTo({
       url: 'macthDetails/macthDetails',
+    })
+  },
+  //用于初始化请求数据
+  initInfo:function(){
+    var that = this;
+    if (!that.data.isLoading) {
+      return false;
+    } else {
+      that.setData({
+        isLoading: false,
+        page:1,
+        noMore:true
+      })
+    }
+    var info = that.data
+    var json = {
+      lat: app.globalData.latitude,
+      lon: app.globalData.longitude,
+      sortType: info.sortType,
+      name: info.name,
+      isFree: info.specialSwitch ? 1 : 0,
+      page: info.page,
+      typeId: info.pondType,
+      type: info.typeId
+    }
+    app.http({
+      url: "/app/Applet/searchMatches",
+      method: "POST",
+      data: json,
+      success: res => {
+        if (res.data.length < 10) {
+          that.setData({
+            noMore: false,
+            context: "没有更多了",
+            pontList: res.data
+          })
+          return
+        }
+        that.setData({
+          pontList: res.data,
+          page: that.data.page + 1,
+          context: "下拉加载更多"
+        })
+      },
+      complete: res => {
+        that.setData({
+          isLoading: true
+        })
+        wx.stopPullDownRefresh();
+      }
     })
   }
 })

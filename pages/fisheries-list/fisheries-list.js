@@ -69,14 +69,18 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+    this.setData({
+      page:1,
+      noMore:true
+    })
+    this.getNearbyPond(true)
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    var that = this 
+    var that = this;
     if (that.data.noMore) {
       that.getNearbyPond()
     }
@@ -182,9 +186,15 @@ Page({
         isLoading:false
       })
     }
-    wx.showLoading({
-      title: '正在加载中',
-    })
+    // var str ;
+    // if (first){
+    //   str = '刷新数据中';
+    // }else{
+    //   str = '数据加载中';
+    // }
+    // wx.showLoading({
+    //   title: str,
+    // })
     var info = that.data
     var json = {
       lat: app.globalData.latitude,
@@ -202,16 +212,22 @@ Page({
       method: "POST",
       data: json,
       success: res => {
+        var pontList ;
+        if (first){
+          pontList = [].concat(res.data);
+        }else{
+          pontList = that.data.pontList.concat(res.data);
+        }
         if (res.data.length < 10) {
           that.setData({
             noMore: false,
             context:"没有更多了",
-            pontList: that.data.pontList.concat(res.data)
+            pontList: pontList
           })
           return
         }
         that.setData({
-          pontList: that.data.pontList.concat(res.data),
+          pontList: pontList,
           page: that.data.page + 1,
           context: "下拉加载更多"
         })
@@ -221,7 +237,8 @@ Page({
           isLoading: true,
           listLength: that.data.pontList.length
         })
-        wx.hideLoading()
+        // wx.hideLoading();
+        wx.stopPullDownRefresh();
       }
     })
   },

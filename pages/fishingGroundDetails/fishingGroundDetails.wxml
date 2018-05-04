@@ -27,9 +27,9 @@
 
 <!-- //购票 -->
 <view wx:if="{{navOn==1}}" class="main pd-top330 ticket">
-  <view class="SpecialOffer dad" wx:if="{{fishTicket.original.length>0}}">
+  <view class="SpecialOffer dad" wx:if="{{fishTicket.special.length>0}}">
     <view class="title">特价鱼票</view>
-    <view class="child"  wx:for="{{fishTicket.original}}">
+    <view class="child"  wx:for="{{fishTicket.special}}">
       <view class="price">
         <view>¥<span class="ft72">{{item.price}}</span></view>
          <view class="textCancel">¥{{item.marketPrice}}</view>
@@ -41,9 +41,9 @@
       <view class="pay" bindtap='pay' data-id="{{item.ticketId}}" data-money="{{item.price}}">购买</view>
     </view>
   </view>
-  <view class="dad" wx:if="{{fishTicket.special.length>0}}">
+  <view class="dad" wx:if="{{fishTicket.original.length>0}}">
     <view class="title">普通鱼票</view>
-    <view class="child" wx:for='{{fishTicket.special}}'>
+    <view class="child" wx:for='{{fishTicket.original}}'>
       <view class="price">
         <view>¥<span class="ft72">{{item.price}}</span></view>
          <!-- <view class="textCancel">¥100</view> -->
@@ -55,6 +55,27 @@
       <view class="pay" bindtap='pay' data-id="{{item.ticketId}}" data-money="{{item.price}}">购买</view>
     </view>
   </view>
+
+  <!-- 商家优惠券 -->
+  <view class="dad" wx:if="{{fishTicket.coupons.couponMoney>0}}">
+    <view class="title">本店优惠券</view>
+    <view class="childcp">
+      <view class="childcpin">
+        <view class="price"><span class="ft40">¥</span></view>
+        <view class="price">
+          <view><span class="ft72">{{fishTicket.coupons.couponMoney}}</span></view>
+        </view>
+        <view class="describe">
+          <text class='ft34'>{{fishTicket.coupons.couponName}}</text>
+          <text class='c6'>有效期：{{fishTicket.coupons.veridate}}</text>
+        </view>
+        <view class="getcoupons" bindtap='takecoupons' data-id="{{fishTicket.coupons.couponId}}" wx:if="{{fishTicket.coupons.isReceived==''}}">点击领取</view>
+        <view class="getcouponsget" data-id="{{fishTicket.coupons.couponId}}" wx:if="{{fishTicket.coupons.isReceived==1}}">已经领取</view>
+        <view class="getcouponsover" data-id="{{fishTicket.coupons.couponId}}" wx:if="{{fishTicket.coupons.isReceived==3}}">已经抢完</view>
+      </view>
+    </view>
+  </view>
+
 </view>
 
 <!-- 放鱼 -->

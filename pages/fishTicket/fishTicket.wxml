@@ -1,15 +1,15 @@
 <!--pages/fishTicket/fishTicket.wxml-->
-<view class='nav'>
-  <block wx:for="{{nav}}">
+ <view class='nav {{isLoading?"":"op4"}}'>
+  <block wx:for="{{nav}}" wx:key>
     <view class="n-item {{navOn==item.id?'on':''}}" bindtap='switchNav' data-id="{{item.id}}">{{item.text}}</view>
   </block>
   <view class="slider" style='left:{{navOn*25}}%'>
     <span></span>
   </view>  
-</view>
+</view> 
 
 <view class="dad ft28">
-  <block wx:for="{{ticket}}">
+  <block wx:for="{{ticket}}" wx:key>
     <view class="item {{item.status==3?'op6':''}}" bindtap='detail' id="{{item.userTicketId}}"  >
         <view class='title clearfix'>
           <span class='iconfont icon-weizhi pondName'> {{item.pondName}}</span>

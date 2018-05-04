@@ -50,7 +50,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+    this.initInfo();
   },
 
   /**
@@ -76,7 +76,7 @@ Page({
       value: e.detail.value
     })
   },
-  getList: function (first) {
+  getList: function (first,isTop) {
     var that = this,json
     if (first) {
       that.setData({
@@ -100,7 +100,12 @@ Page({
       method: "POST",
       data: json,
       success: res => {
-        var list = that.data.list.concat(res.data)
+        var list ;
+        if (isTop){
+          list = [].concat(res.data)
+        }else{
+          list = that.data.list.concat(res.data)
+        }       
         if (res.data.length < 10){
           that.setData({
             noMore: true,
@@ -117,6 +122,9 @@ Page({
         //     noMore: true
         //   })
         // }
+      },
+      complete:function(){
+        wx.stopPullDownRefresh();
       }
     })
   },
@@ -129,5 +137,12 @@ Page({
     wx.navigateTo({
       url: '/pages/fishingGroundDetails/fishingGroundDetails?id=' + event.currentTarget.id
     })
+  },
+  initInfo:function(){
+    this.setData({
+      page:1,
+      noMore:false
+    })
+    this.getList(false,true)
   }
 })

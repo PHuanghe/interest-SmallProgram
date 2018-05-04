@@ -1,5 +1,5 @@
 <view class='fisheries-list font-normal'>
-  <view class="fly">
+  <view class="fly {{isLoading?'':'op4'}}">
     <view class='search '>
       <input placeholder='请输入钓场名称' bindinput="ipt">
       <view class='iconfont icon-fangdajing'></view>
@@ -15,7 +15,7 @@
         <view class='iconfont icon-xiangxia {{sortType==4?"translateX180":""}}'></view>
       </view>
       <view class='line'></view>
-      <view class='flex-item {{specialSwitch?"cRed":""}} item' bindtap='specialSwitch'>特价</view>
+      <view class='flex-item {{specialSwitch?"cRed":""}} item' bindtap='specialSwitch'>优惠券</view>
       <view class='line'></view>
       <view class='flex-item item' bindtap='filtering' >筛选</view>
     </view>
@@ -48,7 +48,7 @@
       </image>
       <view class='fisheries-info'>
         <view class='fisheries-title'>{{item.Name}}
-          <view class='special' wx:if='{{item.isPromotion}}'>特价</view>
+          <view class='special' wx:if='{{item.isPromotion}}'>优惠券</view>
         </view>
         <view class='fisheries-level'>
           <image class='star' src='../../images/star.png'></image>

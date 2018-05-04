@@ -43,8 +43,11 @@
         <span>比赛地点：</span><span class="address">{{match.address}}</span><view class="iconfont icon-ditudaohang map" bindtap='openMap'></view>
     </view> 
     <view class="item ft26">
-        <span>报名截止：</span>{{match.availableTo}}
+        <span>报名开始：</span>{{match.availableBegin}}
     </view> 
+    <view class="item ft26">
+        <span>报名截止：</span>{{match.availableTo}}
+    </view>
     <view class="item ft26">
         <span>报名人数：</span>{{match.enrollNum}}
     </view>
@@ -55,7 +58,7 @@
         <span>比赛场次：</span>{{match.session}}
     </view> 
     <view class="item ft26" bindtap='tel' id="{{match.mobile}}">
-        <span>赛场电话：</span>{{match.mobile}}
+        <span>赛事负责：</span>{{match.mobile}}
     </view> 
   </view>
 
@@ -96,7 +99,10 @@
       <view class="ft26">客服</view>
     </view> 
   </view>
-  <view class="btn zero" id="{{match.matchId}}" bindtap='{{match.isEnroll!=1?"signUp":""}}' wx:if="{{match.status==1}}">
+  <view class="btn zero" id="{{match.matchId}}" bindtap='{{(match.isEnroll!=1 && match.isbegin==1)?"signUp":""}}' wx:if="{{(match.status==1 && match.isbegin==0)}}">
+      未开始报名({{match.price==0?'免费':match.price+'元'}})
+  </view>
+  <view class="btn zero" id="{{match.matchId}}" bindtap='{{(match.isEnroll!=1 && match.isbegin==1)?"signUp":""}}' wx:elif="{{match.status==1}}">
     <block wx:if="{{match.isEnroll!=1}}">
       点击报名({{match.price==0?'免费':match.price+'元'}})
     </block>

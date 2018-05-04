@@ -22,7 +22,7 @@
                   <text>{{match.userList.mobile}}</text>
                 </view>
               </view>
-              <input name="score"></input>
+              <input name="score" type="digit"></input>
               <text class="right">{{match.userList.mark}}</text>    
           </view>
       </view>

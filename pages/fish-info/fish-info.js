@@ -14,9 +14,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getfishMessage();
+    this.getfishMessage(false);
   },
-  getfishMessage:function(){
+  getfishMessage:function(isTop){
     var that = this
     app.http({
       url: "/app/pond/putFishLists",
@@ -25,7 +25,12 @@ Page({
         page:that.data.page
       },
       success: res => {
-        var fishMessage = that.data.fishMessage.concat(res.data)
+        var fishMessage;
+        if(isTop){
+          fishMessage = [].concat(res.data);
+        }else{
+          fishMessage = that.data.fishMessage.concat(res.data);
+        }
         if (res.data.length<10){
           that.setData({
             isInfo:false,
@@ -37,6 +42,9 @@ Page({
           fishMessage: fishMessage,
           page: that.data.page+1
         })
+      },
+      complete:function(){
+        wx.stopPullDownRefresh();
       }
     })
   },
@@ -72,7 +80,11 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+    this.setData({
+       page:1,
+       isInfo:true 
+    })  
+    this.getfishMessage(true);
   },
 
   /**
@@ -81,7 +93,7 @@ Page({
   onReachBottom: function () {
     var that = this
     if (that.data.isInfo){
-      that.getfishMessage()
+      that.getfishMessage(false)
     }
   },
 

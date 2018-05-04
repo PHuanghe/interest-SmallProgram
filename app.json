@@ -1,8 +1,9 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/collarCenter/collarCenter",
     "pages/match/input/input",
+    "pages/match/input/inputInfo/inputInfo",
+    "pages/collarCenter/collarCenter",
     "pages/advertisement/Advertisement",
     "pages/match/input/score/score",
     "pages/success/success",
@@ -29,8 +30,8 @@
 
   ],
   "window":{
-    "backgroundTextStyle":"light",
-    "backgroundColor":"#fff",
+    "backgroundTextStyle":"dark",
+    "backgroundColor":"#F0F0F2",
     "navigationBarBackgroundColor": "#000",
     "navigationBarTitleText": "趣钓鱼",
     "navigationBarTextStyle":"white"

@@ -9,7 +9,7 @@
     <!-- <view class="body-view fr">
       <switch checked bindchange="switch1Change"/>
     </view> -->
-    <navigator class="fr ft32" url="coupon/coupon?money={{money}}">
+    <navigator class="fr ft32" url="coupon/coupon?money={{money}}&pondId={{pondId}}">
       选择优惠券
       <span class="iconfont icon-xiangyou"></span>
     </navigator>

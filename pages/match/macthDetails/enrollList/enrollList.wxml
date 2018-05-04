@@ -7,8 +7,11 @@
         <span>{{item.userName}}</span>
         <span>{{item.updateTime}}</span>
       </view>
-      <view class="label {{item.status==1?'':'cGreen'}}">
+      <!--view class="label {{item.status==1?'':'cGreen'}}">
         {{item.status==1?'未入场':'已入场'}}
-      </view>
+      </view-->
+      <view class="label {{item.status==1?'':'cGreen'}}" wx:if="{{item.status==1}}">待开赛</view>
+      <view class="label {{item.status==1?'':'cGreen'}}" wx:elif="{{item.status==2}}">比赛中</view>
+      <view class="label {{item.status==1?'':'cGreen'}}" wx:else>已结束</view>
   </view>
 </view>

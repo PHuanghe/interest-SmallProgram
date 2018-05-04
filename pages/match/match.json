@@ -1,4 +1,4 @@
 {
   "navigationBarTitleText": "赛事",
-  "enablePullDownRefresh" : false
+  "enablePullDownRefresh" : true
 }
